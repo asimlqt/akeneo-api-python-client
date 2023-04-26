@@ -1,0 +1,43 @@
+from __future__ import absolute_import
+
+# flake8: noqa
+
+# import apis into api package
+from swagger_client.api.asset_api import AssetApi
+from swagger_client.api.asset_attribute_api import AssetAttributeApi
+from swagger_client.api.asset_attribute_option_api import AssetAttributeOptionApi
+from swagger_client.api.asset_family_api import AssetFamilyApi
+from swagger_client.api.asset_media_file_api import AssetMediaFileApi
+from swagger_client.api.association_type_api import AssociationTypeApi
+from swagger_client.api.attribute_api import AttributeApi
+from swagger_client.api.attribute_group_api import AttributeGroupApi
+from swagger_client.api.attribute_option_api import AttributeOptionApi
+from swagger_client.api.authentication_api import AuthenticationApi
+from swagger_client.api.catalog_products_api import CatalogProductsApi
+from swagger_client.api.catalogs_api import CatalogsApi
+from swagger_client.api.category_api import CategoryApi
+from swagger_client.api.channel_api import ChannelApi
+from swagger_client.api.currency_api import CurrencyApi
+from swagger_client.api.family_api import FamilyApi
+from swagger_client.api.family_variant_api import FamilyVariantApi
+from swagger_client.api.locale_api import LocaleApi
+from swagger_client.api.mapping_schema_for_products_api import MappingSchemaForProductsApi
+from swagger_client.api.measure_family_api import MeasureFamilyApi
+from swagger_client.api.measurement_family_api import MeasurementFamilyApi
+from swagger_client.api.overview_api import OverviewApi
+from swagger_client.api.pam_asset_api import PAMAssetApi
+from swagger_client.api.pam_asset_category_api import PAMAssetCategoryApi
+from swagger_client.api.pam_asset_reference_file_api import PAMAssetReferenceFileApi
+from swagger_client.api.pam_asset_tag_api import PAMAssetTagApi
+from swagger_client.api.pam_asset_variation_file_api import PAMAssetVariationFileApi
+from swagger_client.api.product__identifier_api import ProductIdentifierApi
+from swagger_client.api.product__uuid_api import ProductUuidApi
+from swagger_client.api.product_media_file_api import ProductMediaFileApi
+from swagger_client.api.product_model_api import ProductModelApi
+from swagger_client.api.published_product_api import PublishedProductApi
+from swagger_client.api.reference_entity_api import ReferenceEntityApi
+from swagger_client.api.reference_entity_attribute_api import ReferenceEntityAttributeApi
+from swagger_client.api.reference_entity_attribute_option_api import ReferenceEntityAttributeOptionApi
+from swagger_client.api.reference_entity_media_file_api import ReferenceEntityMediaFileApi
+from swagger_client.api.reference_entity_record_api import ReferenceEntityRecordApi
+from swagger_client.api.system_api import SystemApi
