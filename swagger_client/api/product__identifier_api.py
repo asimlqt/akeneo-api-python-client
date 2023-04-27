@@ -222,16 +222,17 @@ class ProductIdentifierApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def get_products(self, **kwargs):  # noqa: E501
+    def get_products(self, authorization, **kwargs):  # noqa: E501
         """Get list of products  # noqa: E501
 
         This endpoint allows you to get a list of products. Products are paginated and they can be filtered. In the Enterprise Edition, since the 2.0, permissions based on your user groups are applied to the set of products you request.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_products(async_req=True)
+        >>> thread = api.get_products(authorization, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
+        :param str authorization: Equal to 'Bearer xx', where 'xx' is the access token. (required)
         :param str search: Filter products, for more details see the <a href=\"/documentation/filter.html\">Filters</a> section
         :param str scope: Filter product values to return scopable attributes for the given channel as well as the non localizable/non scopable attributes, for more details see the <a href=\"/documentation/filter.html#via-channel\">Filter product values via channel</a> section
         :param str locales: Filter product values to return localizable attributes for the given locales as well as the non localizable/non scopable attributes, for more details see the <a href=\"/documentation/filter.html#via-locale\">Filter product values via locale</a> section
@@ -250,21 +251,22 @@ class ProductIdentifierApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async_req'):
-            return self.get_products_with_http_info(**kwargs)  # noqa: E501
+            return self.get_products_with_http_info(authorization, **kwargs)  # noqa: E501
         else:
-            (data) = self.get_products_with_http_info(**kwargs)  # noqa: E501
+            (data) = self.get_products_with_http_info(authorization, **kwargs)  # noqa: E501
             return data
 
-    def get_products_with_http_info(self, **kwargs):  # noqa: E501
+    def get_products_with_http_info(self, authorization, **kwargs):  # noqa: E501
         """Get list of products  # noqa: E501
 
         This endpoint allows you to get a list of products. Products are paginated and they can be filtered. In the Enterprise Edition, since the 2.0, permissions based on your user groups are applied to the set of products you request.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_products_with_http_info(async_req=True)
+        >>> thread = api.get_products_with_http_info(authorization, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
+        :param str authorization: Equal to 'Bearer xx', where 'xx' is the access token. (required)
         :param str search: Filter products, for more details see the <a href=\"/documentation/filter.html\">Filters</a> section
         :param str scope: Filter product values to return scopable attributes for the given channel as well as the non localizable/non scopable attributes, for more details see the <a href=\"/documentation/filter.html#via-channel\">Filter product values via channel</a> section
         :param str locales: Filter product values to return localizable attributes for the given locales as well as the non localizable/non scopable attributes, for more details see the <a href=\"/documentation/filter.html#via-locale\">Filter product values via locale</a> section
@@ -282,7 +284,7 @@ class ProductIdentifierApi(object):
                  returns the request thread.
         """
 
-        all_params = ['search', 'scope', 'locales', 'attributes', 'pagination_type', 'page', 'search_after', 'limit', 'with_count', 'with_attribute_options', 'with_quality_scores', 'with_completenesses']  # noqa: E501
+        all_params = ['authorization', 'search', 'scope', 'locales', 'attributes', 'pagination_type', 'page', 'search_after', 'limit', 'with_count', 'with_attribute_options', 'with_quality_scores', 'with_completenesses']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -297,6 +299,10 @@ class ProductIdentifierApi(object):
                 )
             params[key] = val
         del params['kwargs']
+        # verify the required parameter 'authorization' is set
+        if ('authorization' not in params or
+                params['authorization'] is None):
+            raise ValueError("Missing the required parameter `authorization` when calling `get_products`")  # noqa: E501
 
         collection_formats = {}
 
@@ -329,6 +335,8 @@ class ProductIdentifierApi(object):
             query_params.append(('with_completenesses', params['with_completenesses']))  # noqa: E501
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -357,16 +365,17 @@ class ProductIdentifierApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def get_products_code(self, code, **kwargs):  # noqa: E501
+    def get_products_code(self, authorization, code, **kwargs):  # noqa: E501
         """Get a product  # noqa: E501
 
         This endpoint allows you to get the information about a given product. In the Entreprise Edition, since the v2.0, permissions based on your user groups are applied to the product you request.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_products_code(code, async_req=True)
+        >>> thread = api.get_products_code(authorization, code, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
+        :param str authorization: Equal to 'Bearer xx', where 'xx' is the access token. (required)
         :param str code: Code of the resource (required)
         :param bool with_attribute_options: Return labels of attribute options in the response. (Only available since the 5.0 version)
         :param bool with_quality_scores: Return product quality scores in the response. (Only available since the 5.0 version)
@@ -377,21 +386,22 @@ class ProductIdentifierApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async_req'):
-            return self.get_products_code_with_http_info(code, **kwargs)  # noqa: E501
+            return self.get_products_code_with_http_info(authorization, code, **kwargs)  # noqa: E501
         else:
-            (data) = self.get_products_code_with_http_info(code, **kwargs)  # noqa: E501
+            (data) = self.get_products_code_with_http_info(authorization, code, **kwargs)  # noqa: E501
             return data
 
-    def get_products_code_with_http_info(self, code, **kwargs):  # noqa: E501
+    def get_products_code_with_http_info(self, authorization, code, **kwargs):  # noqa: E501
         """Get a product  # noqa: E501
 
         This endpoint allows you to get the information about a given product. In the Entreprise Edition, since the v2.0, permissions based on your user groups are applied to the product you request.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_products_code_with_http_info(code, async_req=True)
+        >>> thread = api.get_products_code_with_http_info(authorization, code, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
+        :param str authorization: Equal to 'Bearer xx', where 'xx' is the access token. (required)
         :param str code: Code of the resource (required)
         :param bool with_attribute_options: Return labels of attribute options in the response. (Only available since the 5.0 version)
         :param bool with_quality_scores: Return product quality scores in the response. (Only available since the 5.0 version)
@@ -401,7 +411,7 @@ class ProductIdentifierApi(object):
                  returns the request thread.
         """
 
-        all_params = ['code', 'with_attribute_options', 'with_quality_scores', 'with_completenesses']  # noqa: E501
+        all_params = ['authorization', 'code', 'with_attribute_options', 'with_quality_scores', 'with_completenesses']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -416,6 +426,10 @@ class ProductIdentifierApi(object):
                 )
             params[key] = val
         del params['kwargs']
+        # verify the required parameter 'authorization' is set
+        if ('authorization' not in params or
+                params['authorization'] is None):
+            raise ValueError("Missing the required parameter `authorization` when calling `get_products_code`")  # noqa: E501
         # verify the required parameter 'code' is set
         if ('code' not in params or
                 params['code'] is None):
@@ -436,6 +450,8 @@ class ProductIdentifierApi(object):
             query_params.append(('with_completenesses', params['with_completenesses']))  # noqa: E501
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}

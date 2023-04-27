@@ -109,7 +109,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_products_uuid**
-> Products get_products_uuid(search=search, scope=scope, locales=locales, attributes=attributes, pagination_type=pagination_type, page=page, search_after=search_after, limit=limit, with_count=with_count, with_attribute_options=with_attribute_options, with_quality_scores=with_quality_scores, with_completenesses=with_completenesses)
+> Products get_products_uuid(authorization, search=search, scope=scope, locales=locales, attributes=attributes, pagination_type=pagination_type, page=page, search_after=search_after, limit=limit, with_count=with_count, with_attribute_options=with_attribute_options, with_quality_scores=with_quality_scores, with_completenesses=with_completenesses)
 
 Get list of products
 
@@ -125,6 +125,7 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = swagger_client.ProductUuidApi()
+authorization = 'authorization_example' # str | Equal to 'Bearer xx', where 'xx' is the access token.
 search = 'search_example' # str | Filter products, for more details see the <a href=\"/documentation/filter.html\">Filters</a> section (optional)
 scope = 'scope_example' # str | Filter product values to return scopable attributes for the given channel as well as the non localizable/non scopable attributes, for more details see the <a href=\"/documentation/filter.html#via-channel\">Filter product values via channel</a> section (optional)
 locales = 'locales_example' # str | Filter product values to return localizable attributes for the given locales as well as the non localizable/non scopable attributes, for more details see the <a href=\"/documentation/filter.html#via-locale\">Filter product values via locale</a> section (optional)
@@ -140,7 +141,7 @@ with_completenesses = false # bool | Return product completenesses in the respon
 
 try:
     # Get list of products
-    api_response = api_instance.get_products_uuid(search=search, scope=scope, locales=locales, attributes=attributes, pagination_type=pagination_type, page=page, search_after=search_after, limit=limit, with_count=with_count, with_attribute_options=with_attribute_options, with_quality_scores=with_quality_scores, with_completenesses=with_completenesses)
+    api_response = api_instance.get_products_uuid(authorization, search=search, scope=scope, locales=locales, attributes=attributes, pagination_type=pagination_type, page=page, search_after=search_after, limit=limit, with_count=with_count, with_attribute_options=with_attribute_options, with_quality_scores=with_quality_scores, with_completenesses=with_completenesses)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling ProductUuidApi->get_products_uuid: %s\n" % e)
@@ -150,6 +151,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **authorization** | **str**| Equal to &#x27;Bearer xx&#x27;, where &#x27;xx&#x27; is the access token. | 
  **search** | **str**| Filter products, for more details see the &lt;a href&#x3D;\&quot;/documentation/filter.html\&quot;&gt;Filters&lt;/a&gt; section | [optional] 
  **scope** | **str**| Filter product values to return scopable attributes for the given channel as well as the non localizable/non scopable attributes, for more details see the &lt;a href&#x3D;\&quot;/documentation/filter.html#via-channel\&quot;&gt;Filter product values via channel&lt;/a&gt; section | [optional] 
  **locales** | **str**| Filter product values to return localizable attributes for the given locales as well as the non localizable/non scopable attributes, for more details see the &lt;a href&#x3D;\&quot;/documentation/filter.html#via-locale\&quot;&gt;Filter product values via locale&lt;/a&gt; section | [optional] 
@@ -179,7 +181,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_products_uuid_uuid**
-> InlineResponse2003 get_products_uuid_uuid(uuid, with_attribute_options=with_attribute_options, with_quality_scores=with_quality_scores, with_completenesses=with_completenesses)
+> InlineResponse2003 get_products_uuid_uuid(authorization, uuid, with_attribute_options=with_attribute_options, with_quality_scores=with_quality_scores, with_completenesses=with_completenesses)
 
 Get a product
 
@@ -195,6 +197,7 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = swagger_client.ProductUuidApi()
+authorization = 'authorization_example' # str | Equal to 'Bearer xx', where 'xx' is the access token.
 uuid = 'uuid_example' # str | Uuid of the resource
 with_attribute_options = false # bool | Return labels of attribute options in the response. (Only available since the 5.0 version) (optional) (default to false)
 with_quality_scores = false # bool | Return product quality scores in the response. (Only available since the 5.0 version) (optional) (default to false)
@@ -202,7 +205,7 @@ with_completenesses = false # bool | Return product completenesses in the respon
 
 try:
     # Get a product
-    api_response = api_instance.get_products_uuid_uuid(uuid, with_attribute_options=with_attribute_options, with_quality_scores=with_quality_scores, with_completenesses=with_completenesses)
+    api_response = api_instance.get_products_uuid_uuid(authorization, uuid, with_attribute_options=with_attribute_options, with_quality_scores=with_quality_scores, with_completenesses=with_completenesses)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling ProductUuidApi->get_products_uuid_uuid: %s\n" % e)
@@ -212,6 +215,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **authorization** | **str**| Equal to &#x27;Bearer xx&#x27;, where &#x27;xx&#x27; is the access token. | 
  **uuid** | **str**| Uuid of the resource | 
  **with_attribute_options** | **bool**| Return labels of attribute options in the response. (Only available since the 5.0 version) | [optional] [default to false]
  **with_quality_scores** | **bool**| Return product quality scores in the response. (Only available since the 5.0 version) | [optional] [default to false]
