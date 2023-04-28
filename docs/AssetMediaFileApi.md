@@ -8,7 +8,7 @@ Method | HTTP request | Description
 [**post_asset_media_files**](AssetMediaFileApi.md#post_asset_media_files) | **POST** /api/rest/v1/asset-media-files | Create a new media file for an asset
 
 # **get_asset_media_files_code**
-> get_asset_media_files_code(code)
+> get_asset_media_files_code(authorization, code)
 
 Download the media file associated to an asset
 
@@ -24,11 +24,12 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = swagger_client.AssetMediaFileApi()
+authorization = 'authorization_example' # str | Equal to 'Bearer xx', where 'xx' is the access token.
 code = 'code_example' # str | Code of the resource
 
 try:
     # Download the media file associated to an asset
-    api_instance.get_asset_media_files_code(code)
+    api_instance.get_asset_media_files_code(authorization, code)
 except ApiException as e:
     print("Exception when calling AssetMediaFileApi->get_asset_media_files_code: %s\n" % e)
 ```
@@ -37,6 +38,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **authorization** | **str**| Equal to &#x27;Bearer xx&#x27;, where &#x27;xx&#x27; is the access token. | 
  **code** | **str**| Code of the resource | 
 
 ### Return type
@@ -55,7 +57,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_asset_media_files**
-> post_asset_media_files(content_type, body=body)
+> post_asset_media_files(authorization, content_type, body=body)
 
 Create a new media file for an asset
 
@@ -71,12 +73,13 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = swagger_client.AssetMediaFileApi()
+authorization = 'authorization_example' # str | Equal to 'Bearer xx', where 'xx' is the access token.
 content_type = 'content_type_example' # str | Equal to 'multipart/form-data', no other value allowed
 body = swagger_client.V1AssetmediafilesBody() # V1AssetmediafilesBody |  (optional)
 
 try:
     # Create a new media file for an asset
-    api_instance.post_asset_media_files(content_type, body=body)
+    api_instance.post_asset_media_files(authorization, content_type, body=body)
 except ApiException as e:
     print("Exception when calling AssetMediaFileApi->post_asset_media_files: %s\n" % e)
 ```
@@ -85,6 +88,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **authorization** | **str**| Equal to &#x27;Bearer xx&#x27;, where &#x27;xx&#x27; is the access token. | 
  **content_type** | **str**| Equal to &#x27;multipart/form-data&#x27;, no other value allowed | 
  **body** | [**V1AssetmediafilesBody**](V1AssetmediafilesBody.md)|  | [optional] 
 

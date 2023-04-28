@@ -8,7 +8,7 @@ Method | HTTP request | Description
 [**get_locales_code**](LocaleApi.md#get_locales_code) | **GET** /api/rest/v1/locales/{code} | Get a locale
 
 # **get_locales**
-> Locales get_locales(search=search, page=page, limit=limit, with_count=with_count)
+> Locales get_locales(authorization, search=search, page=page, limit=limit, with_count=with_count)
 
 Get a list of locales
 
@@ -24,6 +24,7 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = swagger_client.LocaleApi()
+authorization = 'authorization_example' # str | Equal to 'Bearer xx', where 'xx' is the access token.
 search = 'search_example' # str | Filter locales, for more details see the <a href=\"/documentation/filter.html\">Filters</a> section (optional)
 page = 1 # int | Number of the page to retrieve when using the `page` pagination method type. <strong>Should never be set manually</strong>, see <a href=\"/documentation/pagination.html#pagination\">Pagination</a> section (optional) (default to 1)
 limit = 10 # int | Number of results by page, see <a href=\"/documentation/pagination.html\">Pagination</a> section (optional) (default to 10)
@@ -31,7 +32,7 @@ with_count = false # bool | Return the count of items in the response. Be carefu
 
 try:
     # Get a list of locales
-    api_response = api_instance.get_locales(search=search, page=page, limit=limit, with_count=with_count)
+    api_response = api_instance.get_locales(authorization, search=search, page=page, limit=limit, with_count=with_count)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling LocaleApi->get_locales: %s\n" % e)
@@ -41,6 +42,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **authorization** | **str**| Equal to &#x27;Bearer xx&#x27;, where &#x27;xx&#x27; is the access token. | 
  **search** | **str**| Filter locales, for more details see the &lt;a href&#x3D;\&quot;/documentation/filter.html\&quot;&gt;Filters&lt;/a&gt; section | [optional] 
  **page** | **int**| Number of the page to retrieve when using the &#x60;page&#x60; pagination method type. &lt;strong&gt;Should never be set manually&lt;/strong&gt;, see &lt;a href&#x3D;\&quot;/documentation/pagination.html#pagination\&quot;&gt;Pagination&lt;/a&gt; section | [optional] [default to 1]
  **limit** | **int**| Number of results by page, see &lt;a href&#x3D;\&quot;/documentation/pagination.html\&quot;&gt;Pagination&lt;/a&gt; section | [optional] [default to 10]
@@ -62,7 +64,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_locales_code**
-> InlineResponse20014 get_locales_code(code)
+> InlineResponse20014 get_locales_code(authorization, code)
 
 Get a locale
 
@@ -78,11 +80,12 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = swagger_client.LocaleApi()
+authorization = 'authorization_example' # str | Equal to 'Bearer xx', where 'xx' is the access token.
 code = 'code_example' # str | Code of the resource
 
 try:
     # Get a locale
-    api_response = api_instance.get_locales_code(code)
+    api_response = api_instance.get_locales_code(authorization, code)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling LocaleApi->get_locales_code: %s\n" % e)
@@ -92,6 +95,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **authorization** | **str**| Equal to &#x27;Bearer xx&#x27;, where &#x27;xx&#x27; is the access token. | 
  **code** | **str**| Code of the resource | 
 
 ### Return type

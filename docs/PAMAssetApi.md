@@ -11,7 +11,7 @@ Method | HTTP request | Description
 [**post_pam_assets**](PAMAssetApi.md#post_pam_assets) | **POST** /api/rest/v1/assets | Create a new PAM asset
 
 # **get_pam_assets**
-> PAMAssets get_pam_assets(pagination_type=pagination_type, page=page, search_after=search_after, limit=limit, with_count=with_count)
+> PAMAssets get_pam_assets(authorization, pagination_type=pagination_type, page=page, search_after=search_after, limit=limit, with_count=with_count)
 
 Get list of PAM assets
 
@@ -27,6 +27,7 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = swagger_client.PAMAssetApi()
+authorization = 'authorization_example' # str | Equal to 'Bearer xx', where 'xx' is the access token.
 pagination_type = 'page' # str | Pagination method type, see <a href=\"/documentation/pagination.html\">Pagination</a> section (optional) (default to page)
 page = 1 # int | Number of the page to retrieve when using the `page` pagination method type. <strong>Should never be set manually</strong>, see <a href=\"/documentation/pagination.html#pagination\">Pagination</a> section (optional) (default to 1)
 search_after = 'cursor to the first page' # str | Cursor when using the `search_after` pagination method type. <strong>Should never be set manually</strong>, see <a href=\"/documentation/pagination.html\">Pagination</a> section (optional) (default to cursor to the first page)
@@ -35,7 +36,7 @@ with_count = false # bool | Return the count of items in the response. Be carefu
 
 try:
     # Get list of PAM assets
-    api_response = api_instance.get_pam_assets(pagination_type=pagination_type, page=page, search_after=search_after, limit=limit, with_count=with_count)
+    api_response = api_instance.get_pam_assets(authorization, pagination_type=pagination_type, page=page, search_after=search_after, limit=limit, with_count=with_count)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling PAMAssetApi->get_pam_assets: %s\n" % e)
@@ -45,6 +46,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **authorization** | **str**| Equal to &#x27;Bearer xx&#x27;, where &#x27;xx&#x27; is the access token. | 
  **pagination_type** | **str**| Pagination method type, see &lt;a href&#x3D;\&quot;/documentation/pagination.html\&quot;&gt;Pagination&lt;/a&gt; section | [optional] [default to page]
  **page** | **int**| Number of the page to retrieve when using the &#x60;page&#x60; pagination method type. &lt;strong&gt;Should never be set manually&lt;/strong&gt;, see &lt;a href&#x3D;\&quot;/documentation/pagination.html#pagination\&quot;&gt;Pagination&lt;/a&gt; section | [optional] [default to 1]
  **search_after** | **str**| Cursor when using the &#x60;search_after&#x60; pagination method type. &lt;strong&gt;Should never be set manually&lt;/strong&gt;, see &lt;a href&#x3D;\&quot;/documentation/pagination.html\&quot;&gt;Pagination&lt;/a&gt; section | [optional] [default to cursor to the first page]
@@ -67,7 +69,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_pam_assets_code**
-> InlineResponse20033 get_pam_assets_code(code)
+> InlineResponse20033 get_pam_assets_code(authorization, code)
 
 Get a PAM asset
 
@@ -83,11 +85,12 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = swagger_client.PAMAssetApi()
+authorization = 'authorization_example' # str | Equal to 'Bearer xx', where 'xx' is the access token.
 code = 'code_example' # str | Code of the resource
 
 try:
     # Get a PAM asset
-    api_response = api_instance.get_pam_assets_code(code)
+    api_response = api_instance.get_pam_assets_code(authorization, code)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling PAMAssetApi->get_pam_assets_code: %s\n" % e)
@@ -97,6 +100,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **authorization** | **str**| Equal to &#x27;Bearer xx&#x27;, where &#x27;xx&#x27; is the access token. | 
  **code** | **str**| Code of the resource | 
 
 ### Return type

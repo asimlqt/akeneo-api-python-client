@@ -32,16 +32,17 @@ class PAMAssetVariationFileApi(object):
             api_client = ApiClient()
         self.api_client = api_client
 
-    def get_variation_files_channel_code_locale_code(self, asset_code, channel_code, locale_code, **kwargs):  # noqa: E501
+    def get_variation_files_channel_code_locale_code(self, authorization, asset_code, channel_code, locale_code, **kwargs):  # noqa: E501
         """Get a variation file  # noqa: E501
 
         This endpoint allows you to get the information about a variation file of a given PAM asset.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_variation_files_channel_code_locale_code(asset_code, channel_code, locale_code, async_req=True)
+        >>> thread = api.get_variation_files_channel_code_locale_code(authorization, asset_code, channel_code, locale_code, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
+        :param str authorization: Equal to 'Bearer xx', where 'xx' is the access token. (required)
         :param str asset_code: Code of the asset (required)
         :param str channel_code: Code of the channel (required)
         :param str locale_code: Code of the locale if the asset is localizable or equal to `no-locale` if the asset is not localizable (required)
@@ -51,21 +52,22 @@ class PAMAssetVariationFileApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async_req'):
-            return self.get_variation_files_channel_code_locale_code_with_http_info(asset_code, channel_code, locale_code, **kwargs)  # noqa: E501
+            return self.get_variation_files_channel_code_locale_code_with_http_info(authorization, asset_code, channel_code, locale_code, **kwargs)  # noqa: E501
         else:
-            (data) = self.get_variation_files_channel_code_locale_code_with_http_info(asset_code, channel_code, locale_code, **kwargs)  # noqa: E501
+            (data) = self.get_variation_files_channel_code_locale_code_with_http_info(authorization, asset_code, channel_code, locale_code, **kwargs)  # noqa: E501
             return data
 
-    def get_variation_files_channel_code_locale_code_with_http_info(self, asset_code, channel_code, locale_code, **kwargs):  # noqa: E501
+    def get_variation_files_channel_code_locale_code_with_http_info(self, authorization, asset_code, channel_code, locale_code, **kwargs):  # noqa: E501
         """Get a variation file  # noqa: E501
 
         This endpoint allows you to get the information about a variation file of a given PAM asset.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_variation_files_channel_code_locale_code_with_http_info(asset_code, channel_code, locale_code, async_req=True)
+        >>> thread = api.get_variation_files_channel_code_locale_code_with_http_info(authorization, asset_code, channel_code, locale_code, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
+        :param str authorization: Equal to 'Bearer xx', where 'xx' is the access token. (required)
         :param str asset_code: Code of the asset (required)
         :param str channel_code: Code of the channel (required)
         :param str locale_code: Code of the locale if the asset is localizable or equal to `no-locale` if the asset is not localizable (required)
@@ -74,7 +76,7 @@ class PAMAssetVariationFileApi(object):
                  returns the request thread.
         """
 
-        all_params = ['asset_code', 'channel_code', 'locale_code']  # noqa: E501
+        all_params = ['authorization', 'asset_code', 'channel_code', 'locale_code']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -89,6 +91,10 @@ class PAMAssetVariationFileApi(object):
                 )
             params[key] = val
         del params['kwargs']
+        # verify the required parameter 'authorization' is set
+        if ('authorization' not in params or
+                params['authorization'] is None):
+            raise ValueError("Missing the required parameter `authorization` when calling `get_variation_files_channel_code_locale_code`")  # noqa: E501
         # verify the required parameter 'asset_code' is set
         if ('asset_code' not in params or
                 params['asset_code'] is None):
@@ -115,6 +121,8 @@ class PAMAssetVariationFileApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -143,16 +151,17 @@ class PAMAssetVariationFileApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def get_variation_files_channel_code_locale_code_download(self, asset_code, channel_code, locale_code, **kwargs):  # noqa: E501
+    def get_variation_files_channel_code_locale_code_download(self, authorization, asset_code, channel_code, locale_code, **kwargs):  # noqa: E501
         """Download a variation file  # noqa: E501
 
         This endpoint allows you to download a given variation file.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_variation_files_channel_code_locale_code_download(asset_code, channel_code, locale_code, async_req=True)
+        >>> thread = api.get_variation_files_channel_code_locale_code_download(authorization, asset_code, channel_code, locale_code, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
+        :param str authorization: Equal to 'Bearer xx', where 'xx' is the access token. (required)
         :param str asset_code: Code of the asset (required)
         :param str channel_code: Code of the channel (required)
         :param str locale_code: Code of the locale if the asset is localizable or equal to `no-locale` if the asset is not localizable (required)
@@ -162,21 +171,22 @@ class PAMAssetVariationFileApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async_req'):
-            return self.get_variation_files_channel_code_locale_code_download_with_http_info(asset_code, channel_code, locale_code, **kwargs)  # noqa: E501
+            return self.get_variation_files_channel_code_locale_code_download_with_http_info(authorization, asset_code, channel_code, locale_code, **kwargs)  # noqa: E501
         else:
-            (data) = self.get_variation_files_channel_code_locale_code_download_with_http_info(asset_code, channel_code, locale_code, **kwargs)  # noqa: E501
+            (data) = self.get_variation_files_channel_code_locale_code_download_with_http_info(authorization, asset_code, channel_code, locale_code, **kwargs)  # noqa: E501
             return data
 
-    def get_variation_files_channel_code_locale_code_download_with_http_info(self, asset_code, channel_code, locale_code, **kwargs):  # noqa: E501
+    def get_variation_files_channel_code_locale_code_download_with_http_info(self, authorization, asset_code, channel_code, locale_code, **kwargs):  # noqa: E501
         """Download a variation file  # noqa: E501
 
         This endpoint allows you to download a given variation file.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_variation_files_channel_code_locale_code_download_with_http_info(asset_code, channel_code, locale_code, async_req=True)
+        >>> thread = api.get_variation_files_channel_code_locale_code_download_with_http_info(authorization, asset_code, channel_code, locale_code, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
+        :param str authorization: Equal to 'Bearer xx', where 'xx' is the access token. (required)
         :param str asset_code: Code of the asset (required)
         :param str channel_code: Code of the channel (required)
         :param str locale_code: Code of the locale if the asset is localizable or equal to `no-locale` if the asset is not localizable (required)
@@ -185,7 +195,7 @@ class PAMAssetVariationFileApi(object):
                  returns the request thread.
         """
 
-        all_params = ['asset_code', 'channel_code', 'locale_code']  # noqa: E501
+        all_params = ['authorization', 'asset_code', 'channel_code', 'locale_code']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -200,6 +210,10 @@ class PAMAssetVariationFileApi(object):
                 )
             params[key] = val
         del params['kwargs']
+        # verify the required parameter 'authorization' is set
+        if ('authorization' not in params or
+                params['authorization'] is None):
+            raise ValueError("Missing the required parameter `authorization` when calling `get_variation_files_channel_code_locale_code_download`")  # noqa: E501
         # verify the required parameter 'asset_code' is set
         if ('asset_code' not in params or
                 params['asset_code'] is None):
@@ -226,6 +240,8 @@ class PAMAssetVariationFileApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}

@@ -32,16 +32,17 @@ class ReferenceEntityRecordApi(object):
             api_client = ApiClient()
         self.api_client = api_client
 
-    def get_reference_entity_records(self, reference_entity_code, **kwargs):  # noqa: E501
+    def get_reference_entity_records(self, authorization, reference_entity_code, **kwargs):  # noqa: E501
         """Get the list of the records of a reference entity  # noqa: E501
 
         This endpoint allows you to get a list of records of a given reference entity. Records are paginated and can be filtered.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_reference_entity_records(reference_entity_code, async_req=True)
+        >>> thread = api.get_reference_entity_records(authorization, reference_entity_code, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
+        :param str authorization: Equal to 'Bearer xx', where 'xx' is the access token. (required)
         :param str reference_entity_code: Code of the reference entity (required)
         :param str search: Filter records of the reference entity, for more details see the <a href=\"/documentation/filter.html#filter-reference-entity-records\">Filters</a> section
         :param str channel: Filter attribute values to return scopable attributes for the given channel as well as the non localizable/non scopable attributes, for more details see the <a href=\"/documentation/filter.html#record-values-by-channel\">Filter attribute values by channel</a> section
@@ -53,21 +54,22 @@ class ReferenceEntityRecordApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async_req'):
-            return self.get_reference_entity_records_with_http_info(reference_entity_code, **kwargs)  # noqa: E501
+            return self.get_reference_entity_records_with_http_info(authorization, reference_entity_code, **kwargs)  # noqa: E501
         else:
-            (data) = self.get_reference_entity_records_with_http_info(reference_entity_code, **kwargs)  # noqa: E501
+            (data) = self.get_reference_entity_records_with_http_info(authorization, reference_entity_code, **kwargs)  # noqa: E501
             return data
 
-    def get_reference_entity_records_with_http_info(self, reference_entity_code, **kwargs):  # noqa: E501
+    def get_reference_entity_records_with_http_info(self, authorization, reference_entity_code, **kwargs):  # noqa: E501
         """Get the list of the records of a reference entity  # noqa: E501
 
         This endpoint allows you to get a list of records of a given reference entity. Records are paginated and can be filtered.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_reference_entity_records_with_http_info(reference_entity_code, async_req=True)
+        >>> thread = api.get_reference_entity_records_with_http_info(authorization, reference_entity_code, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
+        :param str authorization: Equal to 'Bearer xx', where 'xx' is the access token. (required)
         :param str reference_entity_code: Code of the reference entity (required)
         :param str search: Filter records of the reference entity, for more details see the <a href=\"/documentation/filter.html#filter-reference-entity-records\">Filters</a> section
         :param str channel: Filter attribute values to return scopable attributes for the given channel as well as the non localizable/non scopable attributes, for more details see the <a href=\"/documentation/filter.html#record-values-by-channel\">Filter attribute values by channel</a> section
@@ -78,7 +80,7 @@ class ReferenceEntityRecordApi(object):
                  returns the request thread.
         """
 
-        all_params = ['reference_entity_code', 'search', 'channel', 'locales', 'search_after']  # noqa: E501
+        all_params = ['authorization', 'reference_entity_code', 'search', 'channel', 'locales', 'search_after']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -93,6 +95,10 @@ class ReferenceEntityRecordApi(object):
                 )
             params[key] = val
         del params['kwargs']
+        # verify the required parameter 'authorization' is set
+        if ('authorization' not in params or
+                params['authorization'] is None):
+            raise ValueError("Missing the required parameter `authorization` when calling `get_reference_entity_records`")  # noqa: E501
         # verify the required parameter 'reference_entity_code' is set
         if ('reference_entity_code' not in params or
                 params['reference_entity_code'] is None):
@@ -115,6 +121,8 @@ class ReferenceEntityRecordApi(object):
             query_params.append(('search_after', params['search_after']))  # noqa: E501
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -143,16 +151,17 @@ class ReferenceEntityRecordApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def get_reference_entity_records_code(self, reference_entity_code, code, **kwargs):  # noqa: E501
+    def get_reference_entity_records_code(self, authorization, reference_entity_code, code, **kwargs):  # noqa: E501
         """Get a record of a given reference entity  # noqa: E501
 
         This endpoint allows you to get the information about a given record for a given reference entity.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_reference_entity_records_code(reference_entity_code, code, async_req=True)
+        >>> thread = api.get_reference_entity_records_code(authorization, reference_entity_code, code, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
+        :param str authorization: Equal to 'Bearer xx', where 'xx' is the access token. (required)
         :param str reference_entity_code: Code of the reference entity (required)
         :param str code: Code of the resource (required)
         :return: InlineResponse20026
@@ -161,21 +170,22 @@ class ReferenceEntityRecordApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async_req'):
-            return self.get_reference_entity_records_code_with_http_info(reference_entity_code, code, **kwargs)  # noqa: E501
+            return self.get_reference_entity_records_code_with_http_info(authorization, reference_entity_code, code, **kwargs)  # noqa: E501
         else:
-            (data) = self.get_reference_entity_records_code_with_http_info(reference_entity_code, code, **kwargs)  # noqa: E501
+            (data) = self.get_reference_entity_records_code_with_http_info(authorization, reference_entity_code, code, **kwargs)  # noqa: E501
             return data
 
-    def get_reference_entity_records_code_with_http_info(self, reference_entity_code, code, **kwargs):  # noqa: E501
+    def get_reference_entity_records_code_with_http_info(self, authorization, reference_entity_code, code, **kwargs):  # noqa: E501
         """Get a record of a given reference entity  # noqa: E501
 
         This endpoint allows you to get the information about a given record for a given reference entity.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_reference_entity_records_code_with_http_info(reference_entity_code, code, async_req=True)
+        >>> thread = api.get_reference_entity_records_code_with_http_info(authorization, reference_entity_code, code, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
+        :param str authorization: Equal to 'Bearer xx', where 'xx' is the access token. (required)
         :param str reference_entity_code: Code of the reference entity (required)
         :param str code: Code of the resource (required)
         :return: InlineResponse20026
@@ -183,7 +193,7 @@ class ReferenceEntityRecordApi(object):
                  returns the request thread.
         """
 
-        all_params = ['reference_entity_code', 'code']  # noqa: E501
+        all_params = ['authorization', 'reference_entity_code', 'code']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -198,6 +208,10 @@ class ReferenceEntityRecordApi(object):
                 )
             params[key] = val
         del params['kwargs']
+        # verify the required parameter 'authorization' is set
+        if ('authorization' not in params or
+                params['authorization'] is None):
+            raise ValueError("Missing the required parameter `authorization` when calling `get_reference_entity_records_code`")  # noqa: E501
         # verify the required parameter 'reference_entity_code' is set
         if ('reference_entity_code' not in params or
                 params['reference_entity_code'] is None):
@@ -218,6 +232,8 @@ class ReferenceEntityRecordApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}

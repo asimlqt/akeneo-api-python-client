@@ -32,16 +32,17 @@ class FamilyApi(object):
             api_client = ApiClient()
         self.api_client = api_client
 
-    def get_families(self, **kwargs):  # noqa: E501
+    def get_families(self, authorization, **kwargs):  # noqa: E501
         """Get list of families  # noqa: E501
 
         This endpoint allows you to get a list of families. Families are paginated and sorted by code.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_families(async_req=True)
+        >>> thread = api.get_families(authorization, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
+        :param str authorization: Equal to 'Bearer xx', where 'xx' is the access token. (required)
         :param str search: Filter families, for more details see the <a href=\"/documentation/filter.html#filter-families\">Filters</a> section.
         :param int page: Number of the page to retrieve when using the `page` pagination method type. <strong>Should never be set manually</strong>, see <a href=\"/documentation/pagination.html#pagination\">Pagination</a> section
         :param int limit: Number of results by page, see <a href=\"/documentation/pagination.html\">Pagination</a> section
@@ -52,21 +53,22 @@ class FamilyApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async_req'):
-            return self.get_families_with_http_info(**kwargs)  # noqa: E501
+            return self.get_families_with_http_info(authorization, **kwargs)  # noqa: E501
         else:
-            (data) = self.get_families_with_http_info(**kwargs)  # noqa: E501
+            (data) = self.get_families_with_http_info(authorization, **kwargs)  # noqa: E501
             return data
 
-    def get_families_with_http_info(self, **kwargs):  # noqa: E501
+    def get_families_with_http_info(self, authorization, **kwargs):  # noqa: E501
         """Get list of families  # noqa: E501
 
         This endpoint allows you to get a list of families. Families are paginated and sorted by code.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_families_with_http_info(async_req=True)
+        >>> thread = api.get_families_with_http_info(authorization, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
+        :param str authorization: Equal to 'Bearer xx', where 'xx' is the access token. (required)
         :param str search: Filter families, for more details see the <a href=\"/documentation/filter.html#filter-families\">Filters</a> section.
         :param int page: Number of the page to retrieve when using the `page` pagination method type. <strong>Should never be set manually</strong>, see <a href=\"/documentation/pagination.html#pagination\">Pagination</a> section
         :param int limit: Number of results by page, see <a href=\"/documentation/pagination.html\">Pagination</a> section
@@ -76,7 +78,7 @@ class FamilyApi(object):
                  returns the request thread.
         """
 
-        all_params = ['search', 'page', 'limit', 'with_count']  # noqa: E501
+        all_params = ['authorization', 'search', 'page', 'limit', 'with_count']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -91,6 +93,10 @@ class FamilyApi(object):
                 )
             params[key] = val
         del params['kwargs']
+        # verify the required parameter 'authorization' is set
+        if ('authorization' not in params or
+                params['authorization'] is None):
+            raise ValueError("Missing the required parameter `authorization` when calling `get_families`")  # noqa: E501
 
         collection_formats = {}
 
@@ -107,6 +113,8 @@ class FamilyApi(object):
             query_params.append(('with_count', params['with_count']))  # noqa: E501
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -135,16 +143,17 @@ class FamilyApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def get_families_code(self, code, **kwargs):  # noqa: E501
+    def get_families_code(self, authorization, code, **kwargs):  # noqa: E501
         """Get a family  # noqa: E501
 
         This endpoint allows you to get the information about a given family.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_families_code(code, async_req=True)
+        >>> thread = api.get_families_code(authorization, code, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
+        :param str authorization: Equal to 'Bearer xx', where 'xx' is the access token. (required)
         :param str code: Code of the resource (required)
         :return: InlineResponse2007
                  If the method is called asynchronously,
@@ -152,28 +161,29 @@ class FamilyApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async_req'):
-            return self.get_families_code_with_http_info(code, **kwargs)  # noqa: E501
+            return self.get_families_code_with_http_info(authorization, code, **kwargs)  # noqa: E501
         else:
-            (data) = self.get_families_code_with_http_info(code, **kwargs)  # noqa: E501
+            (data) = self.get_families_code_with_http_info(authorization, code, **kwargs)  # noqa: E501
             return data
 
-    def get_families_code_with_http_info(self, code, **kwargs):  # noqa: E501
+    def get_families_code_with_http_info(self, authorization, code, **kwargs):  # noqa: E501
         """Get a family  # noqa: E501
 
         This endpoint allows you to get the information about a given family.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_families_code_with_http_info(code, async_req=True)
+        >>> thread = api.get_families_code_with_http_info(authorization, code, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
+        :param str authorization: Equal to 'Bearer xx', where 'xx' is the access token. (required)
         :param str code: Code of the resource (required)
         :return: InlineResponse2007
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['code']  # noqa: E501
+        all_params = ['authorization', 'code']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -188,6 +198,10 @@ class FamilyApi(object):
                 )
             params[key] = val
         del params['kwargs']
+        # verify the required parameter 'authorization' is set
+        if ('authorization' not in params or
+                params['authorization'] is None):
+            raise ValueError("Missing the required parameter `authorization` when calling `get_families_code`")  # noqa: E501
         # verify the required parameter 'code' is set
         if ('code' not in params or
                 params['code'] is None):
@@ -202,6 +216,8 @@ class FamilyApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}

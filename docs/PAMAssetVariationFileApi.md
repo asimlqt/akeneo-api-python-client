@@ -9,7 +9,7 @@ Method | HTTP request | Description
 [**post_variation_files_channel_code_locale_code**](PAMAssetVariationFileApi.md#post_variation_files_channel_code_locale_code) | **POST** /api/rest/v1/assets/{asset_code}/variation-files/{channel_code}/{locale_code} | Upload a new variation file
 
 # **get_variation_files_channel_code_locale_code**
-> InlineResponse20035 get_variation_files_channel_code_locale_code(asset_code, channel_code, locale_code)
+> InlineResponse20035 get_variation_files_channel_code_locale_code(authorization, asset_code, channel_code, locale_code)
 
 Get a variation file
 
@@ -25,13 +25,14 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = swagger_client.PAMAssetVariationFileApi()
+authorization = 'authorization_example' # str | Equal to 'Bearer xx', where 'xx' is the access token.
 asset_code = 'asset_code_example' # str | Code of the asset
 channel_code = 'channel_code_example' # str | Code of the channel
 locale_code = 'locale_code_example' # str | Code of the locale if the asset is localizable or equal to `no-locale` if the asset is not localizable
 
 try:
     # Get a variation file
-    api_response = api_instance.get_variation_files_channel_code_locale_code(asset_code, channel_code, locale_code)
+    api_response = api_instance.get_variation_files_channel_code_locale_code(authorization, asset_code, channel_code, locale_code)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling PAMAssetVariationFileApi->get_variation_files_channel_code_locale_code: %s\n" % e)
@@ -41,6 +42,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **authorization** | **str**| Equal to &#x27;Bearer xx&#x27;, where &#x27;xx&#x27; is the access token. | 
  **asset_code** | **str**| Code of the asset | 
  **channel_code** | **str**| Code of the channel | 
  **locale_code** | **str**| Code of the locale if the asset is localizable or equal to &#x60;no-locale&#x60; if the asset is not localizable | 
@@ -61,7 +63,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_variation_files_channel_code_locale_code_download**
-> get_variation_files_channel_code_locale_code_download(asset_code, channel_code, locale_code)
+> get_variation_files_channel_code_locale_code_download(authorization, asset_code, channel_code, locale_code)
 
 Download a variation file
 
@@ -77,13 +79,14 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = swagger_client.PAMAssetVariationFileApi()
+authorization = 'authorization_example' # str | Equal to 'Bearer xx', where 'xx' is the access token.
 asset_code = 'asset_code_example' # str | Code of the asset
 channel_code = 'channel_code_example' # str | Code of the channel
 locale_code = 'locale_code_example' # str | Code of the locale if the asset is localizable or equal to `no-locale` if the asset is not localizable
 
 try:
     # Download a variation file
-    api_instance.get_variation_files_channel_code_locale_code_download(asset_code, channel_code, locale_code)
+    api_instance.get_variation_files_channel_code_locale_code_download(authorization, asset_code, channel_code, locale_code)
 except ApiException as e:
     print("Exception when calling PAMAssetVariationFileApi->get_variation_files_channel_code_locale_code_download: %s\n" % e)
 ```
@@ -92,6 +95,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **authorization** | **str**| Equal to &#x27;Bearer xx&#x27;, where &#x27;xx&#x27; is the access token. | 
  **asset_code** | **str**| Code of the asset | 
  **channel_code** | **str**| Code of the channel | 
  **locale_code** | **str**| Code of the locale if the asset is localizable or equal to &#x60;no-locale&#x60; if the asset is not localizable | 

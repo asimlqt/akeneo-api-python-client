@@ -9,7 +9,7 @@ Method | HTTP request | Description
 [**patch_reference_entity_attributes_code**](ReferenceEntityAttributeApi.md#patch_reference_entity_attributes_code) | **PATCH** /api/rest/v1/reference-entities/{reference_entity_code}/attributes/{code} | Update/create an attribute of a given reference entity
 
 # **get_reference_entities_code_attributes**
-> list[InlineResponse20021] get_reference_entities_code_attributes(reference_entity_code)
+> list[InlineResponse20021] get_reference_entities_code_attributes(authorization, reference_entity_code)
 
 Get the list of attributes of a given reference entity
 
@@ -25,11 +25,12 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = swagger_client.ReferenceEntityAttributeApi()
+authorization = 'authorization_example' # str | Equal to 'Bearer xx', where 'xx' is the access token.
 reference_entity_code = 'reference_entity_code_example' # str | Code of the reference entity
 
 try:
     # Get the list of attributes of a given reference entity
-    api_response = api_instance.get_reference_entities_code_attributes(reference_entity_code)
+    api_response = api_instance.get_reference_entities_code_attributes(authorization, reference_entity_code)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling ReferenceEntityAttributeApi->get_reference_entities_code_attributes: %s\n" % e)
@@ -39,6 +40,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **authorization** | **str**| Equal to &#x27;Bearer xx&#x27;, where &#x27;xx&#x27; is the access token. | 
  **reference_entity_code** | **str**| Code of the reference entity | 
 
 ### Return type
@@ -57,7 +59,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_reference_entity_attributes_code**
-> InlineResponse20022 get_reference_entity_attributes_code(reference_entity_code, code)
+> InlineResponse20022 get_reference_entity_attributes_code(authorization, reference_entity_code, code)
 
 Get an attribute of a given reference entity
 
@@ -73,12 +75,13 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = swagger_client.ReferenceEntityAttributeApi()
+authorization = 'authorization_example' # str | Equal to 'Bearer xx', where 'xx' is the access token.
 reference_entity_code = 'reference_entity_code_example' # str | Code of the reference entity
 code = 'code_example' # str | Code of the resource
 
 try:
     # Get an attribute of a given reference entity
-    api_response = api_instance.get_reference_entity_attributes_code(reference_entity_code, code)
+    api_response = api_instance.get_reference_entity_attributes_code(authorization, reference_entity_code, code)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling ReferenceEntityAttributeApi->get_reference_entity_attributes_code: %s\n" % e)
@@ -88,6 +91,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **authorization** | **str**| Equal to &#x27;Bearer xx&#x27;, where &#x27;xx&#x27; is the access token. | 
  **reference_entity_code** | **str**| Code of the reference entity | 
  **code** | **str**| Code of the resource | 
 

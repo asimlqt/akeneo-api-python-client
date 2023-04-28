@@ -8,7 +8,7 @@ Method | HTTP request | Description
 [**get_published_products_code**](PublishedProductApi.md#get_published_products_code) | **GET** /api/rest/v1/published-products/{code} | Get a published product
 
 # **get_published_products**
-> PublishedProducts get_published_products(search=search, scope=scope, locales=locales, attributes=attributes, pagination_type=pagination_type, page=page, search_after=search_after, limit=limit, with_count=with_count)
+> PublishedProducts get_published_products(authorization, search=search, scope=scope, locales=locales, attributes=attributes, pagination_type=pagination_type, page=page, search_after=search_after, limit=limit, with_count=with_count)
 
 Get list of published products
 
@@ -24,6 +24,7 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = swagger_client.PublishedProductApi()
+authorization = 'authorization_example' # str | Equal to 'Bearer xx', where 'xx' is the access token.
 search = 'search_example' # str | Filter published products, for more details see the <a href=\"/documentation/filter.html\">Filters</a> section (optional)
 scope = 'scope_example' # str | Filter published product values to return scopable attributes for the given channel as well as the non localizable/non scopable attributes, for more details see the <a href=\"/documentation/filter.html#filter-published-product-values\">Filter on published product values</a> section (optional)
 locales = 'locales_example' # str | Filter published product values to return localizable attributes for the given locales as well as the non localizable/non scopable attributes, for more details see the <a href=\"/documentation/filter.html#filter-published-product-values\">Filter on published product values</a> section (optional)
@@ -36,7 +37,7 @@ with_count = false # bool | Return the count of items in the response. Be carefu
 
 try:
     # Get list of published products
-    api_response = api_instance.get_published_products(search=search, scope=scope, locales=locales, attributes=attributes, pagination_type=pagination_type, page=page, search_after=search_after, limit=limit, with_count=with_count)
+    api_response = api_instance.get_published_products(authorization, search=search, scope=scope, locales=locales, attributes=attributes, pagination_type=pagination_type, page=page, search_after=search_after, limit=limit, with_count=with_count)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling PublishedProductApi->get_published_products: %s\n" % e)
@@ -46,6 +47,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **authorization** | **str**| Equal to &#x27;Bearer xx&#x27;, where &#x27;xx&#x27; is the access token. | 
  **search** | **str**| Filter published products, for more details see the &lt;a href&#x3D;\&quot;/documentation/filter.html\&quot;&gt;Filters&lt;/a&gt; section | [optional] 
  **scope** | **str**| Filter published product values to return scopable attributes for the given channel as well as the non localizable/non scopable attributes, for more details see the &lt;a href&#x3D;\&quot;/documentation/filter.html#filter-published-product-values\&quot;&gt;Filter on published product values&lt;/a&gt; section | [optional] 
  **locales** | **str**| Filter published product values to return localizable attributes for the given locales as well as the non localizable/non scopable attributes, for more details see the &lt;a href&#x3D;\&quot;/documentation/filter.html#filter-published-product-values\&quot;&gt;Filter on published product values&lt;/a&gt; section | [optional] 
@@ -72,7 +74,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_published_products_code**
-> InlineResponse2005 get_published_products_code(code)
+> InlineResponse2005 get_published_products_code(authorization, code)
 
 Get a published product
 
@@ -88,11 +90,12 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = swagger_client.PublishedProductApi()
+authorization = 'authorization_example' # str | Equal to 'Bearer xx', where 'xx' is the access token.
 code = 'code_example' # str | Code of the resource
 
 try:
     # Get a published product
-    api_response = api_instance.get_published_products_code(code)
+    api_response = api_instance.get_published_products_code(authorization, code)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling PublishedProductApi->get_published_products_code: %s\n" % e)
@@ -102,6 +105,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **authorization** | **str**| Equal to &#x27;Bearer xx&#x27;, where &#x27;xx&#x27; is the access token. | 
  **code** | **str**| Code of the resource | 
 
 ### Return type

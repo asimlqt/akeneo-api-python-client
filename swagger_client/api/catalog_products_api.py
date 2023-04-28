@@ -32,16 +32,17 @@ class CatalogProductsApi(object):
             api_client = ApiClient()
         self.api_client = api_client
 
-    def get_app_catalog_mapped_products(self, id, **kwargs):  # noqa: E501
+    def get_app_catalog_mapped_products(self, authorization, id, **kwargs):  # noqa: E501
         """Get the list of mapped products related to a catalog  # noqa: E501
 
         This endpoint allows you to get the list of products related to a catalog when the mapping is enabled. Please, note that a disabled catalog can return an HTTP 200 with a payload containing an error message, for more details see the <a href=\"apps/catalogs.html#troubleshooting\">App Catalog</a> section.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_app_catalog_mapped_products(id, async_req=True)
+        >>> thread = api.get_app_catalog_mapped_products(authorization, id, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
+        :param str authorization: Equal to 'Bearer xx', where 'xx' is the access token. (required)
         :param str id: Catalog ID (required)
         :param str search_after: Cursor when using the `search_after` pagination method type. <strong>Should never be set manually</strong>, see <a href=\"/documentation/pagination.html\">Pagination</a> section
         :param int limit: Number of results by page, see <a href=\"/documentation/pagination.html\">Pagination</a> section
@@ -53,21 +54,22 @@ class CatalogProductsApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async_req'):
-            return self.get_app_catalog_mapped_products_with_http_info(id, **kwargs)  # noqa: E501
+            return self.get_app_catalog_mapped_products_with_http_info(authorization, id, **kwargs)  # noqa: E501
         else:
-            (data) = self.get_app_catalog_mapped_products_with_http_info(id, **kwargs)  # noqa: E501
+            (data) = self.get_app_catalog_mapped_products_with_http_info(authorization, id, **kwargs)  # noqa: E501
             return data
 
-    def get_app_catalog_mapped_products_with_http_info(self, id, **kwargs):  # noqa: E501
+    def get_app_catalog_mapped_products_with_http_info(self, authorization, id, **kwargs):  # noqa: E501
         """Get the list of mapped products related to a catalog  # noqa: E501
 
         This endpoint allows you to get the list of products related to a catalog when the mapping is enabled. Please, note that a disabled catalog can return an HTTP 200 with a payload containing an error message, for more details see the <a href=\"apps/catalogs.html#troubleshooting\">App Catalog</a> section.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_app_catalog_mapped_products_with_http_info(id, async_req=True)
+        >>> thread = api.get_app_catalog_mapped_products_with_http_info(authorization, id, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
+        :param str authorization: Equal to 'Bearer xx', where 'xx' is the access token. (required)
         :param str id: Catalog ID (required)
         :param str search_after: Cursor when using the `search_after` pagination method type. <strong>Should never be set manually</strong>, see <a href=\"/documentation/pagination.html\">Pagination</a> section
         :param int limit: Number of results by page, see <a href=\"/documentation/pagination.html\">Pagination</a> section
@@ -78,7 +80,7 @@ class CatalogProductsApi(object):
                  returns the request thread.
         """
 
-        all_params = ['id', 'search_after', 'limit', 'updated_before', 'updated_after']  # noqa: E501
+        all_params = ['authorization', 'id', 'search_after', 'limit', 'updated_before', 'updated_after']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -93,6 +95,10 @@ class CatalogProductsApi(object):
                 )
             params[key] = val
         del params['kwargs']
+        # verify the required parameter 'authorization' is set
+        if ('authorization' not in params or
+                params['authorization'] is None):
+            raise ValueError("Missing the required parameter `authorization` when calling `get_app_catalog_mapped_products`")  # noqa: E501
         # verify the required parameter 'id' is set
         if ('id' not in params or
                 params['id'] is None):
@@ -115,6 +121,8 @@ class CatalogProductsApi(object):
             query_params.append(('updated_after', params['updated_after']))  # noqa: E501
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -143,16 +151,17 @@ class CatalogProductsApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def get_app_catalog_product_uuids(self, id, **kwargs):  # noqa: E501
+    def get_app_catalog_product_uuids(self, authorization, id, **kwargs):  # noqa: E501
         """Get the list of product uuids  # noqa: E501
 
         This endpoint allows you to get the list of uuids of products contained in a catalog. Please, note that a disabled catalog can return an HTTP 200 with a payload containing an error message, for more details see the <a href=\"apps/catalogs.html#troubleshooting\">App Catalog</a> section.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_app_catalog_product_uuids(id, async_req=True)
+        >>> thread = api.get_app_catalog_product_uuids(authorization, id, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
+        :param str authorization: Equal to 'Bearer xx', where 'xx' is the access token. (required)
         :param str id: Id of the catalog (required)
         :param str search_after: Cursor when using the `search_after` pagination method type. <strong>Should never be set manually</strong>, see <a href=\"/documentation/pagination.html\">Pagination</a> section
         :param int limit: Number of results by page, see <a href=\"/documentation/pagination.html\">Pagination</a> section
@@ -164,21 +173,22 @@ class CatalogProductsApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async_req'):
-            return self.get_app_catalog_product_uuids_with_http_info(id, **kwargs)  # noqa: E501
+            return self.get_app_catalog_product_uuids_with_http_info(authorization, id, **kwargs)  # noqa: E501
         else:
-            (data) = self.get_app_catalog_product_uuids_with_http_info(id, **kwargs)  # noqa: E501
+            (data) = self.get_app_catalog_product_uuids_with_http_info(authorization, id, **kwargs)  # noqa: E501
             return data
 
-    def get_app_catalog_product_uuids_with_http_info(self, id, **kwargs):  # noqa: E501
+    def get_app_catalog_product_uuids_with_http_info(self, authorization, id, **kwargs):  # noqa: E501
         """Get the list of product uuids  # noqa: E501
 
         This endpoint allows you to get the list of uuids of products contained in a catalog. Please, note that a disabled catalog can return an HTTP 200 with a payload containing an error message, for more details see the <a href=\"apps/catalogs.html#troubleshooting\">App Catalog</a> section.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_app_catalog_product_uuids_with_http_info(id, async_req=True)
+        >>> thread = api.get_app_catalog_product_uuids_with_http_info(authorization, id, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
+        :param str authorization: Equal to 'Bearer xx', where 'xx' is the access token. (required)
         :param str id: Id of the catalog (required)
         :param str search_after: Cursor when using the `search_after` pagination method type. <strong>Should never be set manually</strong>, see <a href=\"/documentation/pagination.html\">Pagination</a> section
         :param int limit: Number of results by page, see <a href=\"/documentation/pagination.html\">Pagination</a> section
@@ -189,7 +199,7 @@ class CatalogProductsApi(object):
                  returns the request thread.
         """
 
-        all_params = ['id', 'search_after', 'limit', 'updated_before', 'updated_after']  # noqa: E501
+        all_params = ['authorization', 'id', 'search_after', 'limit', 'updated_before', 'updated_after']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -204,6 +214,10 @@ class CatalogProductsApi(object):
                 )
             params[key] = val
         del params['kwargs']
+        # verify the required parameter 'authorization' is set
+        if ('authorization' not in params or
+                params['authorization'] is None):
+            raise ValueError("Missing the required parameter `authorization` when calling `get_app_catalog_product_uuids`")  # noqa: E501
         # verify the required parameter 'id' is set
         if ('id' not in params or
                 params['id'] is None):
@@ -226,6 +240,8 @@ class CatalogProductsApi(object):
             query_params.append(('updated_after', params['updated_after']))  # noqa: E501
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -254,16 +270,17 @@ class CatalogProductsApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def get_app_catalog_products(self, id, **kwargs):  # noqa: E501
+    def get_app_catalog_products(self, authorization, id, **kwargs):  # noqa: E501
         """Get the list of products related to a catalog  # noqa: E501
 
         This endpoint allows you to get the list of products related to a catalog. Products are paginated and they can be filtered. In the Enterprise Edition, permissions based on your app settings are applied to the set of products you request. Please, note that a disabled catalog can return an HTTP 200 with a payload containing an error message, for more details see the <a href=\"apps/catalogs.html#troubleshooting\">App Catalog</a> section.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_app_catalog_products(id, async_req=True)
+        >>> thread = api.get_app_catalog_products(authorization, id, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
+        :param str authorization: Equal to 'Bearer xx', where 'xx' is the access token. (required)
         :param str id: Catalog ID (required)
         :param str search_after: Cursor when using the `search_after` pagination method type. <strong>Should never be set manually</strong>, see <a href=\"/documentation/pagination.html\">Pagination</a> section
         :param int limit: Number of results by page, see <a href=\"/documentation/pagination.html\">Pagination</a> section
@@ -275,21 +292,22 @@ class CatalogProductsApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async_req'):
-            return self.get_app_catalog_products_with_http_info(id, **kwargs)  # noqa: E501
+            return self.get_app_catalog_products_with_http_info(authorization, id, **kwargs)  # noqa: E501
         else:
-            (data) = self.get_app_catalog_products_with_http_info(id, **kwargs)  # noqa: E501
+            (data) = self.get_app_catalog_products_with_http_info(authorization, id, **kwargs)  # noqa: E501
             return data
 
-    def get_app_catalog_products_with_http_info(self, id, **kwargs):  # noqa: E501
+    def get_app_catalog_products_with_http_info(self, authorization, id, **kwargs):  # noqa: E501
         """Get the list of products related to a catalog  # noqa: E501
 
         This endpoint allows you to get the list of products related to a catalog. Products are paginated and they can be filtered. In the Enterprise Edition, permissions based on your app settings are applied to the set of products you request. Please, note that a disabled catalog can return an HTTP 200 with a payload containing an error message, for more details see the <a href=\"apps/catalogs.html#troubleshooting\">App Catalog</a> section.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_app_catalog_products_with_http_info(id, async_req=True)
+        >>> thread = api.get_app_catalog_products_with_http_info(authorization, id, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
+        :param str authorization: Equal to 'Bearer xx', where 'xx' is the access token. (required)
         :param str id: Catalog ID (required)
         :param str search_after: Cursor when using the `search_after` pagination method type. <strong>Should never be set manually</strong>, see <a href=\"/documentation/pagination.html\">Pagination</a> section
         :param int limit: Number of results by page, see <a href=\"/documentation/pagination.html\">Pagination</a> section
@@ -300,7 +318,7 @@ class CatalogProductsApi(object):
                  returns the request thread.
         """
 
-        all_params = ['id', 'search_after', 'limit', 'updated_before', 'updated_after']  # noqa: E501
+        all_params = ['authorization', 'id', 'search_after', 'limit', 'updated_before', 'updated_after']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -315,6 +333,10 @@ class CatalogProductsApi(object):
                 )
             params[key] = val
         del params['kwargs']
+        # verify the required parameter 'authorization' is set
+        if ('authorization' not in params or
+                params['authorization'] is None):
+            raise ValueError("Missing the required parameter `authorization` when calling `get_app_catalog_products`")  # noqa: E501
         # verify the required parameter 'id' is set
         if ('id' not in params or
                 params['id'] is None):
@@ -337,6 +359,8 @@ class CatalogProductsApi(object):
             query_params.append(('updated_after', params['updated_after']))  # noqa: E501
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -365,16 +389,17 @@ class CatalogProductsApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def get_app_catalog_products_uuid(self, id, uuid, **kwargs):  # noqa: E501
+    def get_app_catalog_products_uuid(self, authorization, id, uuid, **kwargs):  # noqa: E501
         """Get a product related to a catalog  # noqa: E501
 
         This endpoint allows you to get a specific product related to a catalog. In the Enterprise Edition, permissions based on your app settings are applied on the product you request. Please, note that a disabled catalog can return an HTTP 200 with a payload containing an error message, for more details see the <a href=\"apps/catalogs.html#troubleshooting\">App Catalog</a> section.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_app_catalog_products_uuid(id, uuid, async_req=True)
+        >>> thread = api.get_app_catalog_products_uuid(authorization, id, uuid, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
+        :param str authorization: Equal to 'Bearer xx', where 'xx' is the access token. (required)
         :param str id: Catalog ID (required)
         :param str uuid: Product UUID (required)
         :return: None
@@ -383,21 +408,22 @@ class CatalogProductsApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async_req'):
-            return self.get_app_catalog_products_uuid_with_http_info(id, uuid, **kwargs)  # noqa: E501
+            return self.get_app_catalog_products_uuid_with_http_info(authorization, id, uuid, **kwargs)  # noqa: E501
         else:
-            (data) = self.get_app_catalog_products_uuid_with_http_info(id, uuid, **kwargs)  # noqa: E501
+            (data) = self.get_app_catalog_products_uuid_with_http_info(authorization, id, uuid, **kwargs)  # noqa: E501
             return data
 
-    def get_app_catalog_products_uuid_with_http_info(self, id, uuid, **kwargs):  # noqa: E501
+    def get_app_catalog_products_uuid_with_http_info(self, authorization, id, uuid, **kwargs):  # noqa: E501
         """Get a product related to a catalog  # noqa: E501
 
         This endpoint allows you to get a specific product related to a catalog. In the Enterprise Edition, permissions based on your app settings are applied on the product you request. Please, note that a disabled catalog can return an HTTP 200 with a payload containing an error message, for more details see the <a href=\"apps/catalogs.html#troubleshooting\">App Catalog</a> section.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_app_catalog_products_uuid_with_http_info(id, uuid, async_req=True)
+        >>> thread = api.get_app_catalog_products_uuid_with_http_info(authorization, id, uuid, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
+        :param str authorization: Equal to 'Bearer xx', where 'xx' is the access token. (required)
         :param str id: Catalog ID (required)
         :param str uuid: Product UUID (required)
         :return: None
@@ -405,7 +431,7 @@ class CatalogProductsApi(object):
                  returns the request thread.
         """
 
-        all_params = ['id', 'uuid']  # noqa: E501
+        all_params = ['authorization', 'id', 'uuid']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -420,6 +446,10 @@ class CatalogProductsApi(object):
                 )
             params[key] = val
         del params['kwargs']
+        # verify the required parameter 'authorization' is set
+        if ('authorization' not in params or
+                params['authorization'] is None):
+            raise ValueError("Missing the required parameter `authorization` when calling `get_app_catalog_products_uuid`")  # noqa: E501
         # verify the required parameter 'id' is set
         if ('id' not in params or
                 params['id'] is None):
@@ -440,6 +470,8 @@ class CatalogProductsApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}

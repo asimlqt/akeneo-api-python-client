@@ -9,7 +9,7 @@ Method | HTTP request | Description
 [**patch_reference_entity_attributes_attribute_code_options_code**](ReferenceEntityAttributeOptionApi.md#patch_reference_entity_attributes_attribute_code_options_code) | **PATCH** /api/rest/v1/reference-entities/{reference_entity_code}/attributes/{attribute_code}/options/{code} | Update/create a reference entity attribute option
 
 # **get_reference_entity_attributes_attribute_code_options**
-> list[InlineResponse20023] get_reference_entity_attributes_attribute_code_options(reference_entity_code, attribute_code)
+> list[InlineResponse20023] get_reference_entity_attributes_attribute_code_options(authorization, reference_entity_code, attribute_code)
 
 Get a list of attribute options of a given attribute for a given reference entity
 
@@ -25,12 +25,13 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = swagger_client.ReferenceEntityAttributeOptionApi()
+authorization = 'authorization_example' # str | Equal to 'Bearer xx', where 'xx' is the access token.
 reference_entity_code = 'reference_entity_code_example' # str | Code of the reference entity
 attribute_code = 'attribute_code_example' # str | Code of the attribute
 
 try:
     # Get a list of attribute options of a given attribute for a given reference entity
-    api_response = api_instance.get_reference_entity_attributes_attribute_code_options(reference_entity_code, attribute_code)
+    api_response = api_instance.get_reference_entity_attributes_attribute_code_options(authorization, reference_entity_code, attribute_code)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling ReferenceEntityAttributeOptionApi->get_reference_entity_attributes_attribute_code_options: %s\n" % e)
@@ -40,6 +41,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **authorization** | **str**| Equal to &#x27;Bearer xx&#x27;, where &#x27;xx&#x27; is the access token. | 
  **reference_entity_code** | **str**| Code of the reference entity | 
  **attribute_code** | **str**| Code of the attribute | 
 
@@ -59,7 +61,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_reference_entity_attributes_attribute_code_options_code**
-> InlineResponse20024 get_reference_entity_attributes_attribute_code_options_code(reference_entity_code, attribute_code, code)
+> InlineResponse20024 get_reference_entity_attributes_attribute_code_options_code(authorization, reference_entity_code, attribute_code, code)
 
 Get an attribute option for a given attribute of a given reference entity
 
@@ -75,13 +77,14 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = swagger_client.ReferenceEntityAttributeOptionApi()
+authorization = 'authorization_example' # str | Equal to 'Bearer xx', where 'xx' is the access token.
 reference_entity_code = 'reference_entity_code_example' # str | Code of the reference entity
 attribute_code = 'attribute_code_example' # str | Code of the attribute
 code = 'code_example' # str | Code of the resource
 
 try:
     # Get an attribute option for a given attribute of a given reference entity
-    api_response = api_instance.get_reference_entity_attributes_attribute_code_options_code(reference_entity_code, attribute_code, code)
+    api_response = api_instance.get_reference_entity_attributes_attribute_code_options_code(authorization, reference_entity_code, attribute_code, code)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling ReferenceEntityAttributeOptionApi->get_reference_entity_attributes_attribute_code_options_code: %s\n" % e)
@@ -91,6 +94,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **authorization** | **str**| Equal to &#x27;Bearer xx&#x27;, where &#x27;xx&#x27; is the access token. | 
  **reference_entity_code** | **str**| Code of the reference entity | 
  **attribute_code** | **str**| Code of the attribute | 
  **code** | **str**| Code of the resource | 

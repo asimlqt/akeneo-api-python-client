@@ -10,7 +10,7 @@ Method | HTTP request | Description
 [**get_app_catalog_products_uuid**](CatalogProductsApi.md#get_app_catalog_products_uuid) | **GET** /api/rest/v1/catalogs/{id}/products/{uuid} | Get a product related to a catalog
 
 # **get_app_catalog_mapped_products**
-> Products1 get_app_catalog_mapped_products(id, search_after=search_after, limit=limit, updated_before=updated_before, updated_after=updated_after)
+> Products1 get_app_catalog_mapped_products(authorization, id, search_after=search_after, limit=limit, updated_before=updated_before, updated_after=updated_after)
 
 Get the list of mapped products related to a catalog
 
@@ -26,6 +26,7 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = swagger_client.CatalogProductsApi()
+authorization = 'authorization_example' # str | Equal to 'Bearer xx', where 'xx' is the access token.
 id = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # str | Catalog ID
 search_after = 'cursor to the first page' # str | Cursor when using the `search_after` pagination method type. <strong>Should never be set manually</strong>, see <a href=\"/documentation/pagination.html\">Pagination</a> section (optional) (default to cursor to the first page)
 limit = 100 # int | Number of results by page, see <a href=\"/documentation/pagination.html\">Pagination</a> section (optional) (default to 100)
@@ -34,7 +35,7 @@ updated_after = '2013-10-20' # date | Filter products that have been updated AFT
 
 try:
     # Get the list of mapped products related to a catalog
-    api_response = api_instance.get_app_catalog_mapped_products(id, search_after=search_after, limit=limit, updated_before=updated_before, updated_after=updated_after)
+    api_response = api_instance.get_app_catalog_mapped_products(authorization, id, search_after=search_after, limit=limit, updated_before=updated_before, updated_after=updated_after)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling CatalogProductsApi->get_app_catalog_mapped_products: %s\n" % e)
@@ -44,6 +45,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **authorization** | **str**| Equal to &#x27;Bearer xx&#x27;, where &#x27;xx&#x27; is the access token. | 
  **id** | [**str**](.md)| Catalog ID | 
  **search_after** | **str**| Cursor when using the &#x60;search_after&#x60; pagination method type. &lt;strong&gt;Should never be set manually&lt;/strong&gt;, see &lt;a href&#x3D;\&quot;/documentation/pagination.html\&quot;&gt;Pagination&lt;/a&gt; section | [optional] [default to cursor to the first page]
  **limit** | **int**| Number of results by page, see &lt;a href&#x3D;\&quot;/documentation/pagination.html\&quot;&gt;Pagination&lt;/a&gt; section | [optional] [default to 100]
@@ -66,7 +68,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_app_catalog_product_uuids**
-> ProductUuids get_app_catalog_product_uuids(id, search_after=search_after, limit=limit, updated_before=updated_before, updated_after=updated_after)
+> ProductUuids get_app_catalog_product_uuids(authorization, id, search_after=search_after, limit=limit, updated_before=updated_before, updated_after=updated_after)
 
 Get the list of product uuids
 
@@ -82,6 +84,7 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = swagger_client.CatalogProductsApi()
+authorization = 'authorization_example' # str | Equal to 'Bearer xx', where 'xx' is the access token.
 id = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # str | Id of the catalog
 search_after = 'cursor to the first page' # str | Cursor when using the `search_after` pagination method type. <strong>Should never be set manually</strong>, see <a href=\"/documentation/pagination.html\">Pagination</a> section (optional) (default to cursor to the first page)
 limit = 100 # int | Number of results by page, see <a href=\"/documentation/pagination.html\">Pagination</a> section (optional) (default to 100)
@@ -90,7 +93,7 @@ updated_after = '2013-10-20' # date | Filter products that have been updated AFT
 
 try:
     # Get the list of product uuids
-    api_response = api_instance.get_app_catalog_product_uuids(id, search_after=search_after, limit=limit, updated_before=updated_before, updated_after=updated_after)
+    api_response = api_instance.get_app_catalog_product_uuids(authorization, id, search_after=search_after, limit=limit, updated_before=updated_before, updated_after=updated_after)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling CatalogProductsApi->get_app_catalog_product_uuids: %s\n" % e)
@@ -100,6 +103,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **authorization** | **str**| Equal to &#x27;Bearer xx&#x27;, where &#x27;xx&#x27; is the access token. | 
  **id** | [**str**](.md)| Id of the catalog | 
  **search_after** | **str**| Cursor when using the &#x60;search_after&#x60; pagination method type. &lt;strong&gt;Should never be set manually&lt;/strong&gt;, see &lt;a href&#x3D;\&quot;/documentation/pagination.html\&quot;&gt;Pagination&lt;/a&gt; section | [optional] [default to cursor to the first page]
  **limit** | **int**| Number of results by page, see &lt;a href&#x3D;\&quot;/documentation/pagination.html\&quot;&gt;Pagination&lt;/a&gt; section | [optional] [default to 100]
@@ -122,7 +126,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_app_catalog_products**
-> Products1 get_app_catalog_products(id, search_after=search_after, limit=limit, updated_before=updated_before, updated_after=updated_after)
+> Products1 get_app_catalog_products(authorization, id, search_after=search_after, limit=limit, updated_before=updated_before, updated_after=updated_after)
 
 Get the list of products related to a catalog
 
@@ -138,6 +142,7 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = swagger_client.CatalogProductsApi()
+authorization = 'authorization_example' # str | Equal to 'Bearer xx', where 'xx' is the access token.
 id = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # str | Catalog ID
 search_after = 'cursor to the first page' # str | Cursor when using the `search_after` pagination method type. <strong>Should never be set manually</strong>, see <a href=\"/documentation/pagination.html\">Pagination</a> section (optional) (default to cursor to the first page)
 limit = 100 # int | Number of results by page, see <a href=\"/documentation/pagination.html\">Pagination</a> section (optional) (default to 100)
@@ -146,7 +151,7 @@ updated_after = '2013-10-20' # date | Filter products that have been updated AFT
 
 try:
     # Get the list of products related to a catalog
-    api_response = api_instance.get_app_catalog_products(id, search_after=search_after, limit=limit, updated_before=updated_before, updated_after=updated_after)
+    api_response = api_instance.get_app_catalog_products(authorization, id, search_after=search_after, limit=limit, updated_before=updated_before, updated_after=updated_after)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling CatalogProductsApi->get_app_catalog_products: %s\n" % e)
@@ -156,6 +161,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **authorization** | **str**| Equal to &#x27;Bearer xx&#x27;, where &#x27;xx&#x27; is the access token. | 
  **id** | [**str**](.md)| Catalog ID | 
  **search_after** | **str**| Cursor when using the &#x60;search_after&#x60; pagination method type. &lt;strong&gt;Should never be set manually&lt;/strong&gt;, see &lt;a href&#x3D;\&quot;/documentation/pagination.html\&quot;&gt;Pagination&lt;/a&gt; section | [optional] [default to cursor to the first page]
  **limit** | **int**| Number of results by page, see &lt;a href&#x3D;\&quot;/documentation/pagination.html\&quot;&gt;Pagination&lt;/a&gt; section | [optional] [default to 100]
@@ -178,7 +184,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_app_catalog_products_uuid**
-> get_app_catalog_products_uuid(id, uuid)
+> get_app_catalog_products_uuid(authorization, id, uuid)
 
 Get a product related to a catalog
 
@@ -194,12 +200,13 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = swagger_client.CatalogProductsApi()
+authorization = 'authorization_example' # str | Equal to 'Bearer xx', where 'xx' is the access token.
 id = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # str | Catalog ID
 uuid = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # str | Product UUID
 
 try:
     # Get a product related to a catalog
-    api_instance.get_app_catalog_products_uuid(id, uuid)
+    api_instance.get_app_catalog_products_uuid(authorization, id, uuid)
 except ApiException as e:
     print("Exception when calling CatalogProductsApi->get_app_catalog_products_uuid: %s\n" % e)
 ```
@@ -208,6 +215,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **authorization** | **str**| Equal to &#x27;Bearer xx&#x27;, where &#x27;xx&#x27; is the access token. | 
  **id** | [**str**](.md)| Catalog ID | 
  **uuid** | [**str**](.md)| Product UUID | 
 

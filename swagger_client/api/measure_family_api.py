@@ -32,16 +32,17 @@ class MeasureFamilyApi(object):
             api_client = ApiClient()
         self.api_client = api_client
 
-    def measure_families_get(self, code, **kwargs):  # noqa: E501
+    def measure_families_get(self, authorization, code, **kwargs):  # noqa: E501
         """Get a measure family  # noqa: E501
 
         This endpoint allows you to get the information about a given measure family.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.measure_families_get(code, async_req=True)
+        >>> thread = api.measure_families_get(authorization, code, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
+        :param str authorization: Equal to 'Bearer xx', where 'xx' is the access token. (required)
         :param str code: Code of the resource (required)
         :return: InlineResponse20017
                  If the method is called asynchronously,
@@ -49,28 +50,29 @@ class MeasureFamilyApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async_req'):
-            return self.measure_families_get_with_http_info(code, **kwargs)  # noqa: E501
+            return self.measure_families_get_with_http_info(authorization, code, **kwargs)  # noqa: E501
         else:
-            (data) = self.measure_families_get_with_http_info(code, **kwargs)  # noqa: E501
+            (data) = self.measure_families_get_with_http_info(authorization, code, **kwargs)  # noqa: E501
             return data
 
-    def measure_families_get_with_http_info(self, code, **kwargs):  # noqa: E501
+    def measure_families_get_with_http_info(self, authorization, code, **kwargs):  # noqa: E501
         """Get a measure family  # noqa: E501
 
         This endpoint allows you to get the information about a given measure family.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.measure_families_get_with_http_info(code, async_req=True)
+        >>> thread = api.measure_families_get_with_http_info(authorization, code, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
+        :param str authorization: Equal to 'Bearer xx', where 'xx' is the access token. (required)
         :param str code: Code of the resource (required)
         :return: InlineResponse20017
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['code']  # noqa: E501
+        all_params = ['authorization', 'code']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -85,6 +87,10 @@ class MeasureFamilyApi(object):
                 )
             params[key] = val
         del params['kwargs']
+        # verify the required parameter 'authorization' is set
+        if ('authorization' not in params or
+                params['authorization'] is None):
+            raise ValueError("Missing the required parameter `authorization` when calling `measure_families_get`")  # noqa: E501
         # verify the required parameter 'code' is set
         if ('code' not in params or
                 params['code'] is None):
@@ -99,6 +105,8 @@ class MeasureFamilyApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -127,43 +135,45 @@ class MeasureFamilyApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def measure_families_get_list(self, **kwargs):  # noqa: E501
+    def measure_families_get_list(self, authorization, **kwargs):  # noqa: E501
         """Get list of measure familiy  # noqa: E501
 
         This endpoint allows you to get a list of measure families. Measure families are paginated and sorted by code.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.measure_families_get_list(async_req=True)
+        >>> thread = api.measure_families_get_list(authorization, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
+        :param str authorization: Equal to 'Bearer xx', where 'xx' is the access token. (required)
         :return: MeasureFamilies
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async_req'):
-            return self.measure_families_get_list_with_http_info(**kwargs)  # noqa: E501
+            return self.measure_families_get_list_with_http_info(authorization, **kwargs)  # noqa: E501
         else:
-            (data) = self.measure_families_get_list_with_http_info(**kwargs)  # noqa: E501
+            (data) = self.measure_families_get_list_with_http_info(authorization, **kwargs)  # noqa: E501
             return data
 
-    def measure_families_get_list_with_http_info(self, **kwargs):  # noqa: E501
+    def measure_families_get_list_with_http_info(self, authorization, **kwargs):  # noqa: E501
         """Get list of measure familiy  # noqa: E501
 
         This endpoint allows you to get a list of measure families. Measure families are paginated and sorted by code.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.measure_families_get_list_with_http_info(async_req=True)
+        >>> thread = api.measure_families_get_list_with_http_info(authorization, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
+        :param str authorization: Equal to 'Bearer xx', where 'xx' is the access token. (required)
         :return: MeasureFamilies
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = []  # noqa: E501
+        all_params = ['authorization']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -178,6 +188,10 @@ class MeasureFamilyApi(object):
                 )
             params[key] = val
         del params['kwargs']
+        # verify the required parameter 'authorization' is set
+        if ('authorization' not in params or
+                params['authorization'] is None):
+            raise ValueError("Missing the required parameter `authorization` when calling `measure_families_get_list`")  # noqa: E501
 
         collection_formats = {}
 
@@ -186,6 +200,8 @@ class MeasureFamilyApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}

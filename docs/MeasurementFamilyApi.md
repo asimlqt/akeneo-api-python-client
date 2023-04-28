@@ -8,7 +8,7 @@ Method | HTTP request | Description
 [**patch_measurement_families**](MeasurementFamilyApi.md#patch_measurement_families) | **PATCH** /api/rest/v1/measurement-families | Update/create several measurement families
 
 # **measurement_families_get_list**
-> InlineResponse20018 measurement_families_get_list()
+> InlineResponse20018 measurement_families_get_list(authorization)
 
 Get list of measurement families
 
@@ -24,17 +24,21 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = swagger_client.MeasurementFamilyApi()
+authorization = 'authorization_example' # str | Equal to 'Bearer xx', where 'xx' is the access token.
 
 try:
     # Get list of measurement families
-    api_response = api_instance.measurement_families_get_list()
+    api_response = api_instance.measurement_families_get_list(authorization)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling MeasurementFamilyApi->measurement_families_get_list: %s\n" % e)
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **str**| Equal to &#x27;Bearer xx&#x27;, where &#x27;xx&#x27; is the access token. | 
 
 ### Return type
 

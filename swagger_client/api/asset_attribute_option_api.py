@@ -32,16 +32,17 @@ class AssetAttributeOptionApi(object):
             api_client = ApiClient()
         self.api_client = api_client
 
-    def get_asset_attributes_attribute_code_options_code(self, asset_family_code, attribute_code, code, **kwargs):  # noqa: E501
+    def get_asset_attributes_attribute_code_options_code(self, authorization, asset_family_code, attribute_code, code, **kwargs):  # noqa: E501
         """Get an attribute option for a given attribute of a given asset family  # noqa: E501
 
         This endpoint allows you to get the information about a given asset attribute option.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_asset_attributes_attribute_code_options_code(asset_family_code, attribute_code, code, async_req=True)
+        >>> thread = api.get_asset_attributes_attribute_code_options_code(authorization, asset_family_code, attribute_code, code, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
+        :param str authorization: Equal to 'Bearer xx', where 'xx' is the access token. (required)
         :param str asset_family_code: Code of the asset family (required)
         :param str attribute_code: Code of the attribute (required)
         :param str code: Code of the resource (required)
@@ -51,21 +52,22 @@ class AssetAttributeOptionApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async_req'):
-            return self.get_asset_attributes_attribute_code_options_code_with_http_info(asset_family_code, attribute_code, code, **kwargs)  # noqa: E501
+            return self.get_asset_attributes_attribute_code_options_code_with_http_info(authorization, asset_family_code, attribute_code, code, **kwargs)  # noqa: E501
         else:
-            (data) = self.get_asset_attributes_attribute_code_options_code_with_http_info(asset_family_code, attribute_code, code, **kwargs)  # noqa: E501
+            (data) = self.get_asset_attributes_attribute_code_options_code_with_http_info(authorization, asset_family_code, attribute_code, code, **kwargs)  # noqa: E501
             return data
 
-    def get_asset_attributes_attribute_code_options_code_with_http_info(self, asset_family_code, attribute_code, code, **kwargs):  # noqa: E501
+    def get_asset_attributes_attribute_code_options_code_with_http_info(self, authorization, asset_family_code, attribute_code, code, **kwargs):  # noqa: E501
         """Get an attribute option for a given attribute of a given asset family  # noqa: E501
 
         This endpoint allows you to get the information about a given asset attribute option.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_asset_attributes_attribute_code_options_code_with_http_info(asset_family_code, attribute_code, code, async_req=True)
+        >>> thread = api.get_asset_attributes_attribute_code_options_code_with_http_info(authorization, asset_family_code, attribute_code, code, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
+        :param str authorization: Equal to 'Bearer xx', where 'xx' is the access token. (required)
         :param str asset_family_code: Code of the asset family (required)
         :param str attribute_code: Code of the attribute (required)
         :param str code: Code of the resource (required)
@@ -74,7 +76,7 @@ class AssetAttributeOptionApi(object):
                  returns the request thread.
         """
 
-        all_params = ['asset_family_code', 'attribute_code', 'code']  # noqa: E501
+        all_params = ['authorization', 'asset_family_code', 'attribute_code', 'code']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -89,6 +91,10 @@ class AssetAttributeOptionApi(object):
                 )
             params[key] = val
         del params['kwargs']
+        # verify the required parameter 'authorization' is set
+        if ('authorization' not in params or
+                params['authorization'] is None):
+            raise ValueError("Missing the required parameter `authorization` when calling `get_asset_attributes_attribute_code_options_code`")  # noqa: E501
         # verify the required parameter 'asset_family_code' is set
         if ('asset_family_code' not in params or
                 params['asset_family_code'] is None):
@@ -115,6 +121,8 @@ class AssetAttributeOptionApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -143,16 +151,17 @@ class AssetAttributeOptionApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def get_asset_family_attributes_attribute_code_options(self, asset_family_code, attribute_code, **kwargs):  # noqa: E501
+    def get_asset_family_attributes_attribute_code_options(self, authorization, asset_family_code, attribute_code, **kwargs):  # noqa: E501
         """Get a list of attribute options of a given attribute for a given asset family  # noqa: E501
 
         This endpoint allows you to get a list of attribute options for a given asset family.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_asset_family_attributes_attribute_code_options(asset_family_code, attribute_code, async_req=True)
+        >>> thread = api.get_asset_family_attributes_attribute_code_options(authorization, asset_family_code, attribute_code, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
+        :param str authorization: Equal to 'Bearer xx', where 'xx' is the access token. (required)
         :param str asset_family_code: Code of the asset family (required)
         :param str attribute_code: Code of the attribute (required)
         :return: list[InlineResponse20030]
@@ -161,21 +170,22 @@ class AssetAttributeOptionApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async_req'):
-            return self.get_asset_family_attributes_attribute_code_options_with_http_info(asset_family_code, attribute_code, **kwargs)  # noqa: E501
+            return self.get_asset_family_attributes_attribute_code_options_with_http_info(authorization, asset_family_code, attribute_code, **kwargs)  # noqa: E501
         else:
-            (data) = self.get_asset_family_attributes_attribute_code_options_with_http_info(asset_family_code, attribute_code, **kwargs)  # noqa: E501
+            (data) = self.get_asset_family_attributes_attribute_code_options_with_http_info(authorization, asset_family_code, attribute_code, **kwargs)  # noqa: E501
             return data
 
-    def get_asset_family_attributes_attribute_code_options_with_http_info(self, asset_family_code, attribute_code, **kwargs):  # noqa: E501
+    def get_asset_family_attributes_attribute_code_options_with_http_info(self, authorization, asset_family_code, attribute_code, **kwargs):  # noqa: E501
         """Get a list of attribute options of a given attribute for a given asset family  # noqa: E501
 
         This endpoint allows you to get a list of attribute options for a given asset family.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_asset_family_attributes_attribute_code_options_with_http_info(asset_family_code, attribute_code, async_req=True)
+        >>> thread = api.get_asset_family_attributes_attribute_code_options_with_http_info(authorization, asset_family_code, attribute_code, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
+        :param str authorization: Equal to 'Bearer xx', where 'xx' is the access token. (required)
         :param str asset_family_code: Code of the asset family (required)
         :param str attribute_code: Code of the attribute (required)
         :return: list[InlineResponse20030]
@@ -183,7 +193,7 @@ class AssetAttributeOptionApi(object):
                  returns the request thread.
         """
 
-        all_params = ['asset_family_code', 'attribute_code']  # noqa: E501
+        all_params = ['authorization', 'asset_family_code', 'attribute_code']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -198,6 +208,10 @@ class AssetAttributeOptionApi(object):
                 )
             params[key] = val
         del params['kwargs']
+        # verify the required parameter 'authorization' is set
+        if ('authorization' not in params or
+                params['authorization'] is None):
+            raise ValueError("Missing the required parameter `authorization` when calling `get_asset_family_attributes_attribute_code_options`")  # noqa: E501
         # verify the required parameter 'asset_family_code' is set
         if ('asset_family_code' not in params or
                 params['asset_family_code'] is None):
@@ -218,6 +232,8 @@ class AssetAttributeOptionApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}

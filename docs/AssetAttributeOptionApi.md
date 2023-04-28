@@ -9,7 +9,7 @@ Method | HTTP request | Description
 [**patch_asset_attributes_attribute_code_options_code**](AssetAttributeOptionApi.md#patch_asset_attributes_attribute_code_options_code) | **PATCH** /api/rest/v1/asset-families/{asset_family_code}/attributes/{attribute_code}/options/{code} | Update/create an asset attribute option for a given asset family
 
 # **get_asset_attributes_attribute_code_options_code**
-> InlineResponse20031 get_asset_attributes_attribute_code_options_code(asset_family_code, attribute_code, code)
+> InlineResponse20031 get_asset_attributes_attribute_code_options_code(authorization, asset_family_code, attribute_code, code)
 
 Get an attribute option for a given attribute of a given asset family
 
@@ -25,13 +25,14 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = swagger_client.AssetAttributeOptionApi()
+authorization = 'authorization_example' # str | Equal to 'Bearer xx', where 'xx' is the access token.
 asset_family_code = 'asset_family_code_example' # str | Code of the asset family
 attribute_code = 'attribute_code_example' # str | Code of the attribute
 code = 'code_example' # str | Code of the resource
 
 try:
     # Get an attribute option for a given attribute of a given asset family
-    api_response = api_instance.get_asset_attributes_attribute_code_options_code(asset_family_code, attribute_code, code)
+    api_response = api_instance.get_asset_attributes_attribute_code_options_code(authorization, asset_family_code, attribute_code, code)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling AssetAttributeOptionApi->get_asset_attributes_attribute_code_options_code: %s\n" % e)
@@ -41,6 +42,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **authorization** | **str**| Equal to &#x27;Bearer xx&#x27;, where &#x27;xx&#x27; is the access token. | 
  **asset_family_code** | **str**| Code of the asset family | 
  **attribute_code** | **str**| Code of the attribute | 
  **code** | **str**| Code of the resource | 
@@ -61,7 +63,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_asset_family_attributes_attribute_code_options**
-> list[InlineResponse20030] get_asset_family_attributes_attribute_code_options(asset_family_code, attribute_code)
+> list[InlineResponse20030] get_asset_family_attributes_attribute_code_options(authorization, asset_family_code, attribute_code)
 
 Get a list of attribute options of a given attribute for a given asset family
 
@@ -77,12 +79,13 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = swagger_client.AssetAttributeOptionApi()
+authorization = 'authorization_example' # str | Equal to 'Bearer xx', where 'xx' is the access token.
 asset_family_code = 'asset_family_code_example' # str | Code of the asset family
 attribute_code = 'attribute_code_example' # str | Code of the attribute
 
 try:
     # Get a list of attribute options of a given attribute for a given asset family
-    api_response = api_instance.get_asset_family_attributes_attribute_code_options(asset_family_code, attribute_code)
+    api_response = api_instance.get_asset_family_attributes_attribute_code_options(authorization, asset_family_code, attribute_code)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling AssetAttributeOptionApi->get_asset_family_attributes_attribute_code_options: %s\n" % e)
@@ -92,6 +95,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **authorization** | **str**| Equal to &#x27;Bearer xx&#x27;, where &#x27;xx&#x27; is the access token. | 
  **asset_family_code** | **str**| Code of the asset family | 
  **attribute_code** | **str**| Code of the attribute | 
 

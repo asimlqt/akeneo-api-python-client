@@ -56,7 +56,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_app_catalogs_mapping_schema_product**
-> InlineResponse20038 get_app_catalogs_mapping_schema_product(id)
+> InlineResponse20038 get_app_catalogs_mapping_schema_product(authorization, id)
 
 Get the product mapping schema related to a catalog
 
@@ -72,11 +72,12 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = swagger_client.MappingSchemaForProductsApi()
+authorization = 'authorization_example' # str | Equal to 'Bearer xx', where 'xx' is the access token.
 id = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # str | Catalog ID
 
 try:
     # Get the product mapping schema related to a catalog
-    api_response = api_instance.get_app_catalogs_mapping_schema_product(id)
+    api_response = api_instance.get_app_catalogs_mapping_schema_product(authorization, id)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling MappingSchemaForProductsApi->get_app_catalogs_mapping_schema_product: %s\n" % e)
@@ -86,6 +87,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **authorization** | **str**| Equal to &#x27;Bearer xx&#x27;, where &#x27;xx&#x27; is the access token. | 
  **id** | [**str**](.md)| Catalog ID | 
 
 ### Return type

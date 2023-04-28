@@ -61,7 +61,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_draft_uuid_uuid**
-> InlineResponse2003 get_draft_uuid_uuid(uuid)
+> InlineResponse2003 get_draft_uuid_uuid(authorization, uuid)
 
 Get a draft
 
@@ -77,11 +77,12 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = swagger_client.ProductUuidApi()
+authorization = 'authorization_example' # str | Equal to 'Bearer xx', where 'xx' is the access token.
 uuid = 'uuid_example' # str | Uuid of the resource
 
 try:
     # Get a draft
-    api_response = api_instance.get_draft_uuid_uuid(uuid)
+    api_response = api_instance.get_draft_uuid_uuid(authorization, uuid)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling ProductUuidApi->get_draft_uuid_uuid: %s\n" % e)
@@ -91,6 +92,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **authorization** | **str**| Equal to &#x27;Bearer xx&#x27;, where &#x27;xx&#x27; is the access token. | 
  **uuid** | **str**| Uuid of the resource | 
 
 ### Return type
@@ -381,7 +383,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_proposal_uuid**
-> post_proposal_uuid(uuid)
+> post_proposal_uuid(authorization, uuid)
 
 Submit a draft for approval
 
@@ -397,11 +399,12 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = swagger_client.ProductUuidApi()
+authorization = 'authorization_example' # str | Equal to 'Bearer xx', where 'xx' is the access token.
 uuid = 'uuid_example' # str | Uuid of the resource
 
 try:
     # Submit a draft for approval
-    api_instance.post_proposal_uuid(uuid)
+    api_instance.post_proposal_uuid(authorization, uuid)
 except ApiException as e:
     print("Exception when calling ProductUuidApi->post_proposal_uuid: %s\n" % e)
 ```
@@ -410,6 +413,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **authorization** | **str**| Equal to &#x27;Bearer xx&#x27;, where &#x27;xx&#x27; is the access token. | 
  **uuid** | **str**| Uuid of the resource | 
 
 ### Return type

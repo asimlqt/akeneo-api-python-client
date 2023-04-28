@@ -60,7 +60,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_assets**
-> Asset get_assets(asset_family_code, search=search, channel=channel, locales=locales, search_after=search_after)
+> Asset get_assets(authorization, asset_family_code, search=search, channel=channel, locales=locales, search_after=search_after)
 
 Get the list of the assets of a given asset family
 
@@ -76,6 +76,7 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = swagger_client.AssetApi()
+authorization = 'authorization_example' # str | Equal to 'Bearer xx', where 'xx' is the access token.
 asset_family_code = 'asset_family_code_example' # str | Code of the asset family
 search = 'search_example' # str | Filter assets, for more details see the <a href=\"/documentation/filter.html#filter-assets\">Asset filters</a> section (optional)
 channel = 'channel_example' # str | Filter asset values to return scopable asset attributes for the given channel as well as the non localizable/non scopable asset attributes, for more details see the <a href=\"/documentation/filter.html#asset-values-by-channel\">Filter asset values by channel</a> section (optional)
@@ -84,7 +85,7 @@ search_after = 'cursor to the first page' # str | Cursor when using the `search_
 
 try:
     # Get the list of the assets of a given asset family
-    api_response = api_instance.get_assets(asset_family_code, search=search, channel=channel, locales=locales, search_after=search_after)
+    api_response = api_instance.get_assets(authorization, asset_family_code, search=search, channel=channel, locales=locales, search_after=search_after)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling AssetApi->get_assets: %s\n" % e)
@@ -94,6 +95,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **authorization** | **str**| Equal to &#x27;Bearer xx&#x27;, where &#x27;xx&#x27; is the access token. | 
  **asset_family_code** | **str**| Code of the asset family | 
  **search** | **str**| Filter assets, for more details see the &lt;a href&#x3D;\&quot;/documentation/filter.html#filter-assets\&quot;&gt;Asset filters&lt;/a&gt; section | [optional] 
  **channel** | **str**| Filter asset values to return scopable asset attributes for the given channel as well as the non localizable/non scopable asset attributes, for more details see the &lt;a href&#x3D;\&quot;/documentation/filter.html#asset-values-by-channel\&quot;&gt;Filter asset values by channel&lt;/a&gt; section | [optional] 
@@ -116,7 +118,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_assets_code**
-> InlineResponse20032 get_assets_code(asset_family_code, code)
+> InlineResponse20032 get_assets_code(authorization, asset_family_code, code)
 
 Get an asset of a given asset family
 
@@ -132,12 +134,13 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = swagger_client.AssetApi()
+authorization = 'authorization_example' # str | Equal to 'Bearer xx', where 'xx' is the access token.
 asset_family_code = 'asset_family_code_example' # str | Code of the asset family
 code = 'code_example' # str | Code of the resource
 
 try:
     # Get an asset of a given asset family
-    api_response = api_instance.get_assets_code(asset_family_code, code)
+    api_response = api_instance.get_assets_code(authorization, asset_family_code, code)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling AssetApi->get_assets_code: %s\n" % e)
@@ -147,6 +150,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **authorization** | **str**| Equal to &#x27;Bearer xx&#x27;, where &#x27;xx&#x27; is the access token. | 
  **asset_family_code** | **str**| Code of the asset family | 
  **code** | **str**| Code of the resource | 
 

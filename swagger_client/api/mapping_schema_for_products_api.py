@@ -127,16 +127,17 @@ class MappingSchemaForProductsApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def get_app_catalogs_mapping_schema_product(self, id, **kwargs):  # noqa: E501
+    def get_app_catalogs_mapping_schema_product(self, authorization, id, **kwargs):  # noqa: E501
         """Get the product mapping schema related to a catalog  # noqa: E501
 
         This endpoint allows you to retrieve the product mapping schema related to a catalog  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_app_catalogs_mapping_schema_product(id, async_req=True)
+        >>> thread = api.get_app_catalogs_mapping_schema_product(authorization, id, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
+        :param str authorization: Equal to 'Bearer xx', where 'xx' is the access token. (required)
         :param str id: Catalog ID (required)
         :return: InlineResponse20038
                  If the method is called asynchronously,
@@ -144,28 +145,29 @@ class MappingSchemaForProductsApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async_req'):
-            return self.get_app_catalogs_mapping_schema_product_with_http_info(id, **kwargs)  # noqa: E501
+            return self.get_app_catalogs_mapping_schema_product_with_http_info(authorization, id, **kwargs)  # noqa: E501
         else:
-            (data) = self.get_app_catalogs_mapping_schema_product_with_http_info(id, **kwargs)  # noqa: E501
+            (data) = self.get_app_catalogs_mapping_schema_product_with_http_info(authorization, id, **kwargs)  # noqa: E501
             return data
 
-    def get_app_catalogs_mapping_schema_product_with_http_info(self, id, **kwargs):  # noqa: E501
+    def get_app_catalogs_mapping_schema_product_with_http_info(self, authorization, id, **kwargs):  # noqa: E501
         """Get the product mapping schema related to a catalog  # noqa: E501
 
         This endpoint allows you to retrieve the product mapping schema related to a catalog  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_app_catalogs_mapping_schema_product_with_http_info(id, async_req=True)
+        >>> thread = api.get_app_catalogs_mapping_schema_product_with_http_info(authorization, id, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
+        :param str authorization: Equal to 'Bearer xx', where 'xx' is the access token. (required)
         :param str id: Catalog ID (required)
         :return: InlineResponse20038
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['id']  # noqa: E501
+        all_params = ['authorization', 'id']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -180,6 +182,10 @@ class MappingSchemaForProductsApi(object):
                 )
             params[key] = val
         del params['kwargs']
+        # verify the required parameter 'authorization' is set
+        if ('authorization' not in params or
+                params['authorization'] is None):
+            raise ValueError("Missing the required parameter `authorization` when calling `get_app_catalogs_mapping_schema_product`")  # noqa: E501
         # verify the required parameter 'id' is set
         if ('id' not in params or
                 params['id'] is None):
@@ -194,6 +200,8 @@ class MappingSchemaForProductsApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}

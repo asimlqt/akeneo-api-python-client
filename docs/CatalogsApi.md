@@ -58,7 +58,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_app_catalog**
-> InlineResponse2011 get_app_catalog(id)
+> InlineResponse2011 get_app_catalog(authorization, id)
 
 Get a catalog
 
@@ -74,11 +74,12 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = swagger_client.CatalogsApi()
+authorization = 'authorization_example' # str | Equal to 'Bearer xx', where 'xx' is the access token.
 id = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # str | Catalog ID
 
 try:
     # Get a catalog
-    api_response = api_instance.get_app_catalog(id)
+    api_response = api_instance.get_app_catalog(authorization, id)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling CatalogsApi->get_app_catalog: %s\n" % e)
@@ -88,6 +89,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **authorization** | **str**| Equal to &#x27;Bearer xx&#x27;, where &#x27;xx&#x27; is the access token. | 
  **id** | [**str**](.md)| Catalog ID | 
 
 ### Return type
@@ -106,7 +108,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_app_catalogs**
-> Catalogs get_app_catalogs(page=page, limit=limit)
+> Catalogs get_app_catalogs(authorization, page=page, limit=limit)
 
 Get the list of owned catalogs
 
@@ -122,12 +124,13 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = swagger_client.CatalogsApi()
+authorization = 'authorization_example' # str | Equal to 'Bearer xx', where 'xx' is the access token.
 page = 1 # int | Number of the page to retrieve when using the `page` pagination method type. <strong>Should never be set manually</strong>, see <a href=\"/documentation/pagination.html#pagination\">Pagination</a> section (optional) (default to 1)
 limit = 100 # int | Number of results by page, see <a href=\"/documentation/pagination.html\">Pagination</a> section (optional) (default to 100)
 
 try:
     # Get the list of owned catalogs
-    api_response = api_instance.get_app_catalogs(page=page, limit=limit)
+    api_response = api_instance.get_app_catalogs(authorization, page=page, limit=limit)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling CatalogsApi->get_app_catalogs: %s\n" % e)
@@ -137,6 +140,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **authorization** | **str**| Equal to &#x27;Bearer xx&#x27;, where &#x27;xx&#x27; is the access token. | 
  **page** | **int**| Number of the page to retrieve when using the &#x60;page&#x60; pagination method type. &lt;strong&gt;Should never be set manually&lt;/strong&gt;, see &lt;a href&#x3D;\&quot;/documentation/pagination.html#pagination\&quot;&gt;Pagination&lt;/a&gt; section | [optional] [default to 1]
  **limit** | **int**| Number of results by page, see &lt;a href&#x3D;\&quot;/documentation/pagination.html\&quot;&gt;Pagination&lt;/a&gt; section | [optional] [default to 100]
 

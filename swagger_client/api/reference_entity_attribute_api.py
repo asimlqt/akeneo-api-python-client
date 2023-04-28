@@ -32,16 +32,17 @@ class ReferenceEntityAttributeApi(object):
             api_client = ApiClient()
         self.api_client = api_client
 
-    def get_reference_entities_code_attributes(self, reference_entity_code, **kwargs):  # noqa: E501
+    def get_reference_entities_code_attributes(self, authorization, reference_entity_code, **kwargs):  # noqa: E501
         """Get the list of attributes of a given reference entity  # noqa: E501
 
         This endpoint allows you to get the list of attributes of a given reference entity.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_reference_entities_code_attributes(reference_entity_code, async_req=True)
+        >>> thread = api.get_reference_entities_code_attributes(authorization, reference_entity_code, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
+        :param str authorization: Equal to 'Bearer xx', where 'xx' is the access token. (required)
         :param str reference_entity_code: Code of the reference entity (required)
         :return: list[InlineResponse20021]
                  If the method is called asynchronously,
@@ -49,28 +50,29 @@ class ReferenceEntityAttributeApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async_req'):
-            return self.get_reference_entities_code_attributes_with_http_info(reference_entity_code, **kwargs)  # noqa: E501
+            return self.get_reference_entities_code_attributes_with_http_info(authorization, reference_entity_code, **kwargs)  # noqa: E501
         else:
-            (data) = self.get_reference_entities_code_attributes_with_http_info(reference_entity_code, **kwargs)  # noqa: E501
+            (data) = self.get_reference_entities_code_attributes_with_http_info(authorization, reference_entity_code, **kwargs)  # noqa: E501
             return data
 
-    def get_reference_entities_code_attributes_with_http_info(self, reference_entity_code, **kwargs):  # noqa: E501
+    def get_reference_entities_code_attributes_with_http_info(self, authorization, reference_entity_code, **kwargs):  # noqa: E501
         """Get the list of attributes of a given reference entity  # noqa: E501
 
         This endpoint allows you to get the list of attributes of a given reference entity.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_reference_entities_code_attributes_with_http_info(reference_entity_code, async_req=True)
+        >>> thread = api.get_reference_entities_code_attributes_with_http_info(authorization, reference_entity_code, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
+        :param str authorization: Equal to 'Bearer xx', where 'xx' is the access token. (required)
         :param str reference_entity_code: Code of the reference entity (required)
         :return: list[InlineResponse20021]
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['reference_entity_code']  # noqa: E501
+        all_params = ['authorization', 'reference_entity_code']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -85,6 +87,10 @@ class ReferenceEntityAttributeApi(object):
                 )
             params[key] = val
         del params['kwargs']
+        # verify the required parameter 'authorization' is set
+        if ('authorization' not in params or
+                params['authorization'] is None):
+            raise ValueError("Missing the required parameter `authorization` when calling `get_reference_entities_code_attributes`")  # noqa: E501
         # verify the required parameter 'reference_entity_code' is set
         if ('reference_entity_code' not in params or
                 params['reference_entity_code'] is None):
@@ -99,6 +105,8 @@ class ReferenceEntityAttributeApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -127,16 +135,17 @@ class ReferenceEntityAttributeApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def get_reference_entity_attributes_code(self, reference_entity_code, code, **kwargs):  # noqa: E501
+    def get_reference_entity_attributes_code(self, authorization, reference_entity_code, code, **kwargs):  # noqa: E501
         """Get an attribute of a given reference entity  # noqa: E501
 
         This endpoint allows you to get the information about a given attribute for a given reference entity.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_reference_entity_attributes_code(reference_entity_code, code, async_req=True)
+        >>> thread = api.get_reference_entity_attributes_code(authorization, reference_entity_code, code, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
+        :param str authorization: Equal to 'Bearer xx', where 'xx' is the access token. (required)
         :param str reference_entity_code: Code of the reference entity (required)
         :param str code: Code of the resource (required)
         :return: InlineResponse20022
@@ -145,21 +154,22 @@ class ReferenceEntityAttributeApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async_req'):
-            return self.get_reference_entity_attributes_code_with_http_info(reference_entity_code, code, **kwargs)  # noqa: E501
+            return self.get_reference_entity_attributes_code_with_http_info(authorization, reference_entity_code, code, **kwargs)  # noqa: E501
         else:
-            (data) = self.get_reference_entity_attributes_code_with_http_info(reference_entity_code, code, **kwargs)  # noqa: E501
+            (data) = self.get_reference_entity_attributes_code_with_http_info(authorization, reference_entity_code, code, **kwargs)  # noqa: E501
             return data
 
-    def get_reference_entity_attributes_code_with_http_info(self, reference_entity_code, code, **kwargs):  # noqa: E501
+    def get_reference_entity_attributes_code_with_http_info(self, authorization, reference_entity_code, code, **kwargs):  # noqa: E501
         """Get an attribute of a given reference entity  # noqa: E501
 
         This endpoint allows you to get the information about a given attribute for a given reference entity.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_reference_entity_attributes_code_with_http_info(reference_entity_code, code, async_req=True)
+        >>> thread = api.get_reference_entity_attributes_code_with_http_info(authorization, reference_entity_code, code, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
+        :param str authorization: Equal to 'Bearer xx', where 'xx' is the access token. (required)
         :param str reference_entity_code: Code of the reference entity (required)
         :param str code: Code of the resource (required)
         :return: InlineResponse20022
@@ -167,7 +177,7 @@ class ReferenceEntityAttributeApi(object):
                  returns the request thread.
         """
 
-        all_params = ['reference_entity_code', 'code']  # noqa: E501
+        all_params = ['authorization', 'reference_entity_code', 'code']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -182,6 +192,10 @@ class ReferenceEntityAttributeApi(object):
                 )
             params[key] = val
         del params['kwargs']
+        # verify the required parameter 'authorization' is set
+        if ('authorization' not in params or
+                params['authorization'] is None):
+            raise ValueError("Missing the required parameter `authorization` when calling `get_reference_entity_attributes_code`")  # noqa: E501
         # verify the required parameter 'reference_entity_code' is set
         if ('reference_entity_code' not in params or
                 params['reference_entity_code'] is None):
@@ -202,6 +216,8 @@ class ReferenceEntityAttributeApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}

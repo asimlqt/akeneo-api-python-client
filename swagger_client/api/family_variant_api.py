@@ -32,16 +32,17 @@ class FamilyVariantApi(object):
             api_client = ApiClient()
         self.api_client = api_client
 
-    def get_families_family_code_variants(self, family_code, **kwargs):  # noqa: E501
+    def get_families_family_code_variants(self, authorization, family_code, **kwargs):  # noqa: E501
         """Get list of family variants  # noqa: E501
 
         This endpoint allows you to get a list of family variants. Family variants are paginated and sorted by code.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_families_family_code_variants(family_code, async_req=True)
+        >>> thread = api.get_families_family_code_variants(authorization, family_code, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
+        :param str authorization: Equal to 'Bearer xx', where 'xx' is the access token. (required)
         :param str family_code: Code of the family (required)
         :param int page: Number of the page to retrieve when using the `page` pagination method type. <strong>Should never be set manually</strong>, see <a href=\"/documentation/pagination.html#pagination\">Pagination</a> section
         :param int limit: Number of results by page, see <a href=\"/documentation/pagination.html\">Pagination</a> section
@@ -52,21 +53,22 @@ class FamilyVariantApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async_req'):
-            return self.get_families_family_code_variants_with_http_info(family_code, **kwargs)  # noqa: E501
+            return self.get_families_family_code_variants_with_http_info(authorization, family_code, **kwargs)  # noqa: E501
         else:
-            (data) = self.get_families_family_code_variants_with_http_info(family_code, **kwargs)  # noqa: E501
+            (data) = self.get_families_family_code_variants_with_http_info(authorization, family_code, **kwargs)  # noqa: E501
             return data
 
-    def get_families_family_code_variants_with_http_info(self, family_code, **kwargs):  # noqa: E501
+    def get_families_family_code_variants_with_http_info(self, authorization, family_code, **kwargs):  # noqa: E501
         """Get list of family variants  # noqa: E501
 
         This endpoint allows you to get a list of family variants. Family variants are paginated and sorted by code.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_families_family_code_variants_with_http_info(family_code, async_req=True)
+        >>> thread = api.get_families_family_code_variants_with_http_info(authorization, family_code, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
+        :param str authorization: Equal to 'Bearer xx', where 'xx' is the access token. (required)
         :param str family_code: Code of the family (required)
         :param int page: Number of the page to retrieve when using the `page` pagination method type. <strong>Should never be set manually</strong>, see <a href=\"/documentation/pagination.html#pagination\">Pagination</a> section
         :param int limit: Number of results by page, see <a href=\"/documentation/pagination.html\">Pagination</a> section
@@ -76,7 +78,7 @@ class FamilyVariantApi(object):
                  returns the request thread.
         """
 
-        all_params = ['family_code', 'page', 'limit', 'with_count']  # noqa: E501
+        all_params = ['authorization', 'family_code', 'page', 'limit', 'with_count']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -91,6 +93,10 @@ class FamilyVariantApi(object):
                 )
             params[key] = val
         del params['kwargs']
+        # verify the required parameter 'authorization' is set
+        if ('authorization' not in params or
+                params['authorization'] is None):
+            raise ValueError("Missing the required parameter `authorization` when calling `get_families_family_code_variants`")  # noqa: E501
         # verify the required parameter 'family_code' is set
         if ('family_code' not in params or
                 params['family_code'] is None):
@@ -111,6 +117,8 @@ class FamilyVariantApi(object):
             query_params.append(('with_count', params['with_count']))  # noqa: E501
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -139,16 +147,17 @@ class FamilyVariantApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def get_families_family_code_variants_code(self, family_code, code, **kwargs):  # noqa: E501
+    def get_families_family_code_variants_code(self, authorization, family_code, code, **kwargs):  # noqa: E501
         """Get a family variant  # noqa: E501
 
         This endpoint allows you to get the information about a given family variant.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_families_family_code_variants_code(family_code, code, async_req=True)
+        >>> thread = api.get_families_family_code_variants_code(authorization, family_code, code, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
+        :param str authorization: Equal to 'Bearer xx', where 'xx' is the access token. (required)
         :param str family_code: Code of the family (required)
         :param str code: Code of the resource (required)
         :return: InlineResponse2008
@@ -157,21 +166,22 @@ class FamilyVariantApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async_req'):
-            return self.get_families_family_code_variants_code_with_http_info(family_code, code, **kwargs)  # noqa: E501
+            return self.get_families_family_code_variants_code_with_http_info(authorization, family_code, code, **kwargs)  # noqa: E501
         else:
-            (data) = self.get_families_family_code_variants_code_with_http_info(family_code, code, **kwargs)  # noqa: E501
+            (data) = self.get_families_family_code_variants_code_with_http_info(authorization, family_code, code, **kwargs)  # noqa: E501
             return data
 
-    def get_families_family_code_variants_code_with_http_info(self, family_code, code, **kwargs):  # noqa: E501
+    def get_families_family_code_variants_code_with_http_info(self, authorization, family_code, code, **kwargs):  # noqa: E501
         """Get a family variant  # noqa: E501
 
         This endpoint allows you to get the information about a given family variant.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_families_family_code_variants_code_with_http_info(family_code, code, async_req=True)
+        >>> thread = api.get_families_family_code_variants_code_with_http_info(authorization, family_code, code, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
+        :param str authorization: Equal to 'Bearer xx', where 'xx' is the access token. (required)
         :param str family_code: Code of the family (required)
         :param str code: Code of the resource (required)
         :return: InlineResponse2008
@@ -179,7 +189,7 @@ class FamilyVariantApi(object):
                  returns the request thread.
         """
 
-        all_params = ['family_code', 'code']  # noqa: E501
+        all_params = ['authorization', 'family_code', 'code']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -194,6 +204,10 @@ class FamilyVariantApi(object):
                 )
             params[key] = val
         del params['kwargs']
+        # verify the required parameter 'authorization' is set
+        if ('authorization' not in params or
+                params['authorization'] is None):
+            raise ValueError("Missing the required parameter `authorization` when calling `get_families_family_code_variants_code`")  # noqa: E501
         # verify the required parameter 'family_code' is set
         if ('family_code' not in params or
                 params['family_code'] is None):
@@ -214,6 +228,8 @@ class FamilyVariantApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}

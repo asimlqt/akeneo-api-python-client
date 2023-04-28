@@ -61,7 +61,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_product_model_draft_code**
-> InlineResponse2004 get_product_model_draft_code(code)
+> InlineResponse2004 get_product_model_draft_code(authorization, code)
 
 Get a draft
 
@@ -77,11 +77,12 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = swagger_client.ProductModelApi()
+authorization = 'authorization_example' # str | Equal to 'Bearer xx', where 'xx' is the access token.
 code = 'code_example' # str | Code of the resource
 
 try:
     # Get a draft
-    api_response = api_instance.get_product_model_draft_code(code)
+    api_response = api_instance.get_product_model_draft_code(authorization, code)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling ProductModelApi->get_product_model_draft_code: %s\n" % e)
@@ -91,6 +92,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **authorization** | **str**| Equal to &#x27;Bearer xx&#x27;, where &#x27;xx&#x27; is the access token. | 
  **code** | **str**| Code of the resource | 
 
 ### Return type
@@ -109,7 +111,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_product_models**
-> ProductModels get_product_models(search=search, scope=scope, locales=locales, attributes=attributes, pagination_type=pagination_type, page=page, search_after=search_after, limit=limit, with_count=with_count, with_quality_scores=with_quality_scores)
+> ProductModels get_product_models(authorization, search=search, scope=scope, locales=locales, attributes=attributes, pagination_type=pagination_type, page=page, search_after=search_after, limit=limit, with_count=with_count, with_quality_scores=with_quality_scores)
 
 Get list of product models
 
@@ -125,6 +127,7 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = swagger_client.ProductModelApi()
+authorization = 'authorization_example' # str | Equal to 'Bearer xx', where 'xx' is the access token.
 search = 'search_example' # str | Filter product models, for more details see the <a href=\"/documentation/filter.html\">Filters</a> section (optional)
 scope = 'scope_example' # str | Filter product values to return scopable attributes for the given channel as well as the non localizable/non scopable attributes, for more details see the <a href=\"/documentation/filter.html#via-channel\">Filter product values via channel</a> section (optional)
 locales = 'locales_example' # str | Filter product values to return localizable attributes for the given locales as well as the non localizable/non scopable attributes, for more details see the <a href=\"/documentation/filter.html#via-locale\">Filter product values via locale</a> section (optional)
@@ -138,7 +141,7 @@ with_quality_scores = true # bool | Return product model quality scores in the r
 
 try:
     # Get list of product models
-    api_response = api_instance.get_product_models(search=search, scope=scope, locales=locales, attributes=attributes, pagination_type=pagination_type, page=page, search_after=search_after, limit=limit, with_count=with_count, with_quality_scores=with_quality_scores)
+    api_response = api_instance.get_product_models(authorization, search=search, scope=scope, locales=locales, attributes=attributes, pagination_type=pagination_type, page=page, search_after=search_after, limit=limit, with_count=with_count, with_quality_scores=with_quality_scores)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling ProductModelApi->get_product_models: %s\n" % e)
@@ -148,6 +151,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **authorization** | **str**| Equal to &#x27;Bearer xx&#x27;, where &#x27;xx&#x27; is the access token. | 
  **search** | **str**| Filter product models, for more details see the &lt;a href&#x3D;\&quot;/documentation/filter.html\&quot;&gt;Filters&lt;/a&gt; section | [optional] 
  **scope** | **str**| Filter product values to return scopable attributes for the given channel as well as the non localizable/non scopable attributes, for more details see the &lt;a href&#x3D;\&quot;/documentation/filter.html#via-channel\&quot;&gt;Filter product values via channel&lt;/a&gt; section | [optional] 
  **locales** | **str**| Filter product values to return localizable attributes for the given locales as well as the non localizable/non scopable attributes, for more details see the &lt;a href&#x3D;\&quot;/documentation/filter.html#via-locale\&quot;&gt;Filter product values via locale&lt;/a&gt; section | [optional] 
@@ -175,7 +179,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_product_models_code**
-> InlineResponse2004 get_product_models_code(code, with_quality_scores=with_quality_scores)
+> InlineResponse2004 get_product_models_code(authorization, code, with_quality_scores=with_quality_scores)
 
 Get a product model
 
@@ -191,12 +195,13 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = swagger_client.ProductModelApi()
+authorization = 'authorization_example' # str | Equal to 'Bearer xx', where 'xx' is the access token.
 code = 'code_example' # str | Code of the resource
 with_quality_scores = true # bool | Return product model quality scores in the response. <strong>(Only available since the 6.0 version)</strong> (optional)
 
 try:
     # Get a product model
-    api_response = api_instance.get_product_models_code(code, with_quality_scores=with_quality_scores)
+    api_response = api_instance.get_product_models_code(authorization, code, with_quality_scores=with_quality_scores)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling ProductModelApi->get_product_models_code: %s\n" % e)
@@ -206,6 +211,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **authorization** | **str**| Equal to &#x27;Bearer xx&#x27;, where &#x27;xx&#x27; is the access token. | 
  **code** | **str**| Code of the resource | 
  **with_quality_scores** | **bool**| Return product model quality scores in the response. &lt;strong&gt;(Only available since the 6.0 version)&lt;/strong&gt; | [optional] 
 
@@ -322,7 +328,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_product_model_proposal**
-> post_product_model_proposal(code)
+> post_product_model_proposal(authorization, code)
 
 Submit a draft for approval
 
@@ -338,11 +344,12 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = swagger_client.ProductModelApi()
+authorization = 'authorization_example' # str | Equal to 'Bearer xx', where 'xx' is the access token.
 code = 'code_example' # str | Code of the resource
 
 try:
     # Submit a draft for approval
-    api_instance.post_product_model_proposal(code)
+    api_instance.post_product_model_proposal(authorization, code)
 except ApiException as e:
     print("Exception when calling ProductModelApi->post_product_model_proposal: %s\n" % e)
 ```
@@ -351,6 +358,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **authorization** | **str**| Equal to &#x27;Bearer xx&#x27;, where &#x27;xx&#x27; is the access token. | 
  **code** | **str**| Code of the resource | 
 
 ### Return type

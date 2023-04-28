@@ -9,7 +9,7 @@ Method | HTTP request | Description
 [**patch_asset_family_code**](AssetFamilyApi.md#patch_asset_family_code) | **PATCH** /api/rest/v1/asset-families/{code} | Update/create an asset family
 
 # **get_asset_families**
-> AssetFamilies get_asset_families(search_after=search_after)
+> AssetFamilies get_asset_families(authorization, search_after=search_after)
 
 Get list of asset families
 
@@ -25,11 +25,12 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = swagger_client.AssetFamilyApi()
+authorization = 'authorization_example' # str | Equal to 'Bearer xx', where 'xx' is the access token.
 search_after = 'cursor to the first page' # str | Cursor when using the `search_after` pagination method type. <strong>Should never be set manually</strong>, see <a href=\"/documentation/pagination.html\">Pagination</a> section (optional) (default to cursor to the first page)
 
 try:
     # Get list of asset families
-    api_response = api_instance.get_asset_families(search_after=search_after)
+    api_response = api_instance.get_asset_families(authorization, search_after=search_after)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling AssetFamilyApi->get_asset_families: %s\n" % e)
@@ -39,6 +40,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **authorization** | **str**| Equal to &#x27;Bearer xx&#x27;, where &#x27;xx&#x27; is the access token. | 
  **search_after** | **str**| Cursor when using the &#x60;search_after&#x60; pagination method type. &lt;strong&gt;Should never be set manually&lt;/strong&gt;, see &lt;a href&#x3D;\&quot;/documentation/pagination.html\&quot;&gt;Pagination&lt;/a&gt; section | [optional] [default to cursor to the first page]
 
 ### Return type
@@ -57,7 +59,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_asset_family_code**
-> InlineResponse20027 get_asset_family_code(code)
+> InlineResponse20027 get_asset_family_code(authorization, code)
 
 Get an asset family
 
@@ -73,11 +75,12 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = swagger_client.AssetFamilyApi()
+authorization = 'authorization_example' # str | Equal to 'Bearer xx', where 'xx' is the access token.
 code = 'code_example' # str | Code of the resource
 
 try:
     # Get an asset family
-    api_response = api_instance.get_asset_family_code(code)
+    api_response = api_instance.get_asset_family_code(authorization, code)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling AssetFamilyApi->get_asset_family_code: %s\n" % e)
@@ -87,6 +90,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **authorization** | **str**| Equal to &#x27;Bearer xx&#x27;, where &#x27;xx&#x27; is the access token. | 
  **code** | **str**| Code of the resource | 
 
 ### Return type

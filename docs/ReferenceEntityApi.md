@@ -9,7 +9,7 @@ Method | HTTP request | Description
 [**patch_reference_entity_code**](ReferenceEntityApi.md#patch_reference_entity_code) | **PATCH** /api/rest/v1/reference-entities/{code} | Update/create a reference entity
 
 # **get_reference_entities**
-> ReferenceEntities get_reference_entities(search_after=search_after)
+> ReferenceEntities get_reference_entities(authorization, search_after=search_after)
 
 Get list of reference entities
 
@@ -25,11 +25,12 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = swagger_client.ReferenceEntityApi()
+authorization = 'authorization_example' # str | Equal to 'Bearer xx', where 'xx' is the access token.
 search_after = 'cursor to the first page' # str | Cursor when using the `search_after` pagination method type. <strong>Should never be set manually</strong>, see <a href=\"/documentation/pagination.html\">Pagination</a> section (optional) (default to cursor to the first page)
 
 try:
     # Get list of reference entities
-    api_response = api_instance.get_reference_entities(search_after=search_after)
+    api_response = api_instance.get_reference_entities(authorization, search_after=search_after)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling ReferenceEntityApi->get_reference_entities: %s\n" % e)
@@ -39,6 +40,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **authorization** | **str**| Equal to &#x27;Bearer xx&#x27;, where &#x27;xx&#x27; is the access token. | 
  **search_after** | **str**| Cursor when using the &#x60;search_after&#x60; pagination method type. &lt;strong&gt;Should never be set manually&lt;/strong&gt;, see &lt;a href&#x3D;\&quot;/documentation/pagination.html\&quot;&gt;Pagination&lt;/a&gt; section | [optional] [default to cursor to the first page]
 
 ### Return type
@@ -57,7 +59,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_reference_entities_code**
-> InlineResponse20020 get_reference_entities_code(code)
+> InlineResponse20020 get_reference_entities_code(authorization, code)
 
 Get a reference entity
 
@@ -73,11 +75,12 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = swagger_client.ReferenceEntityApi()
+authorization = 'authorization_example' # str | Equal to 'Bearer xx', where 'xx' is the access token.
 code = 'code_example' # str | Code of the resource
 
 try:
     # Get a reference entity
-    api_response = api_instance.get_reference_entities_code(code)
+    api_response = api_instance.get_reference_entities_code(authorization, code)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling ReferenceEntityApi->get_reference_entities_code: %s\n" % e)
@@ -87,6 +90,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **authorization** | **str**| Equal to &#x27;Bearer xx&#x27;, where &#x27;xx&#x27; is the access token. | 
  **code** | **str**| Code of the resource | 
 
 ### Return type

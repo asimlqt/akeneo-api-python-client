@@ -61,7 +61,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_draft_code**
-> InlineResponse2001 get_draft_code(code)
+> InlineResponse2001 get_draft_code(authorization, code)
 
 Get a draft
 
@@ -77,11 +77,12 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = swagger_client.ProductIdentifierApi()
+authorization = 'authorization_example' # str | Equal to 'Bearer xx', where 'xx' is the access token.
 code = 'code_example' # str | Code of the resource
 
 try:
     # Get a draft
-    api_response = api_instance.get_draft_code(code)
+    api_response = api_instance.get_draft_code(authorization, code)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling ProductIdentifierApi->get_draft_code: %s\n" % e)
@@ -91,6 +92,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **authorization** | **str**| Equal to &#x27;Bearer xx&#x27;, where &#x27;xx&#x27; is the access token. | 
  **code** | **str**| Code of the resource | 
 
 ### Return type
@@ -381,7 +383,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_proposal**
-> post_proposal(code)
+> post_proposal(authorization, code)
 
 Submit a draft for approval
 
@@ -397,11 +399,12 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = swagger_client.ProductIdentifierApi()
+authorization = 'authorization_example' # str | Equal to 'Bearer xx', where 'xx' is the access token.
 code = 'code_example' # str | Code of the resource
 
 try:
     # Submit a draft for approval
-    api_instance.post_proposal(code)
+    api_instance.post_proposal(authorization, code)
 except ApiException as e:
     print("Exception when calling ProductIdentifierApi->post_proposal: %s\n" % e)
 ```
@@ -410,6 +413,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **authorization** | **str**| Equal to &#x27;Bearer xx&#x27;, where &#x27;xx&#x27; is the access token. | 
  **code** | **str**| Code of the resource | 
 
 ### Return type

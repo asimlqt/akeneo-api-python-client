@@ -127,16 +127,17 @@ class CatalogsApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def get_app_catalog(self, id, **kwargs):  # noqa: E501
+    def get_app_catalog(self, authorization, id, **kwargs):  # noqa: E501
         """Get a catalog  # noqa: E501
 
         This endpoint allows you to get the information about a catalog.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_app_catalog(id, async_req=True)
+        >>> thread = api.get_app_catalog(authorization, id, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
+        :param str authorization: Equal to 'Bearer xx', where 'xx' is the access token. (required)
         :param str id: Catalog ID (required)
         :return: InlineResponse2011
                  If the method is called asynchronously,
@@ -144,28 +145,29 @@ class CatalogsApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async_req'):
-            return self.get_app_catalog_with_http_info(id, **kwargs)  # noqa: E501
+            return self.get_app_catalog_with_http_info(authorization, id, **kwargs)  # noqa: E501
         else:
-            (data) = self.get_app_catalog_with_http_info(id, **kwargs)  # noqa: E501
+            (data) = self.get_app_catalog_with_http_info(authorization, id, **kwargs)  # noqa: E501
             return data
 
-    def get_app_catalog_with_http_info(self, id, **kwargs):  # noqa: E501
+    def get_app_catalog_with_http_info(self, authorization, id, **kwargs):  # noqa: E501
         """Get a catalog  # noqa: E501
 
         This endpoint allows you to get the information about a catalog.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_app_catalog_with_http_info(id, async_req=True)
+        >>> thread = api.get_app_catalog_with_http_info(authorization, id, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
+        :param str authorization: Equal to 'Bearer xx', where 'xx' is the access token. (required)
         :param str id: Catalog ID (required)
         :return: InlineResponse2011
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['id']  # noqa: E501
+        all_params = ['authorization', 'id']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -180,6 +182,10 @@ class CatalogsApi(object):
                 )
             params[key] = val
         del params['kwargs']
+        # verify the required parameter 'authorization' is set
+        if ('authorization' not in params or
+                params['authorization'] is None):
+            raise ValueError("Missing the required parameter `authorization` when calling `get_app_catalog`")  # noqa: E501
         # verify the required parameter 'id' is set
         if ('id' not in params or
                 params['id'] is None):
@@ -194,6 +200,8 @@ class CatalogsApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -222,16 +230,17 @@ class CatalogsApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def get_app_catalogs(self, **kwargs):  # noqa: E501
+    def get_app_catalogs(self, authorization, **kwargs):  # noqa: E501
         """Get the list of owned catalogs  # noqa: E501
 
         This endpoint allows you to get the list of catalogs you owned.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_app_catalogs(async_req=True)
+        >>> thread = api.get_app_catalogs(authorization, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
+        :param str authorization: Equal to 'Bearer xx', where 'xx' is the access token. (required)
         :param int page: Number of the page to retrieve when using the `page` pagination method type. <strong>Should never be set manually</strong>, see <a href=\"/documentation/pagination.html#pagination\">Pagination</a> section
         :param int limit: Number of results by page, see <a href=\"/documentation/pagination.html\">Pagination</a> section
         :return: Catalogs
@@ -240,21 +249,22 @@ class CatalogsApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async_req'):
-            return self.get_app_catalogs_with_http_info(**kwargs)  # noqa: E501
+            return self.get_app_catalogs_with_http_info(authorization, **kwargs)  # noqa: E501
         else:
-            (data) = self.get_app_catalogs_with_http_info(**kwargs)  # noqa: E501
+            (data) = self.get_app_catalogs_with_http_info(authorization, **kwargs)  # noqa: E501
             return data
 
-    def get_app_catalogs_with_http_info(self, **kwargs):  # noqa: E501
+    def get_app_catalogs_with_http_info(self, authorization, **kwargs):  # noqa: E501
         """Get the list of owned catalogs  # noqa: E501
 
         This endpoint allows you to get the list of catalogs you owned.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_app_catalogs_with_http_info(async_req=True)
+        >>> thread = api.get_app_catalogs_with_http_info(authorization, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
+        :param str authorization: Equal to 'Bearer xx', where 'xx' is the access token. (required)
         :param int page: Number of the page to retrieve when using the `page` pagination method type. <strong>Should never be set manually</strong>, see <a href=\"/documentation/pagination.html#pagination\">Pagination</a> section
         :param int limit: Number of results by page, see <a href=\"/documentation/pagination.html\">Pagination</a> section
         :return: Catalogs
@@ -262,7 +272,7 @@ class CatalogsApi(object):
                  returns the request thread.
         """
 
-        all_params = ['page', 'limit']  # noqa: E501
+        all_params = ['authorization', 'page', 'limit']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -277,6 +287,10 @@ class CatalogsApi(object):
                 )
             params[key] = val
         del params['kwargs']
+        # verify the required parameter 'authorization' is set
+        if ('authorization' not in params or
+                params['authorization'] is None):
+            raise ValueError("Missing the required parameter `authorization` when calling `get_app_catalogs`")  # noqa: E501
 
         collection_formats = {}
 
@@ -289,6 +303,8 @@ class CatalogsApi(object):
             query_params.append(('limit', params['limit']))  # noqa: E501
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}

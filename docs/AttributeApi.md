@@ -11,7 +11,7 @@ Method | HTTP request | Description
 [**post_attributes**](AttributeApi.md#post_attributes) | **POST** /api/rest/v1/attributes | Create a new attribute
 
 # **get_attributes**
-> Attributes get_attributes(search=search, page=page, limit=limit, with_count=with_count, with_table_select_options=with_table_select_options)
+> Attributes get_attributes(authorization, search=search, page=page, limit=limit, with_count=with_count, with_table_select_options=with_table_select_options)
 
 Get list of attributes
 
@@ -27,6 +27,7 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = swagger_client.AttributeApi()
+authorization = 'authorization_example' # str | Equal to 'Bearer xx', where 'xx' is the access token.
 search = 'search_example' # str | Filter attributes, for more details see the <a href=\"/documentation/filter.html#filter-attributes\">Filters</a> section. (optional)
 page = 1 # int | Number of the page to retrieve when using the `page` pagination method type. <strong>Should never be set manually</strong>, see <a href=\"/documentation/pagination.html#pagination\">Pagination</a> section (optional) (default to 1)
 limit = 10 # int | Number of results by page, see <a href=\"/documentation/pagination.html\">Pagination</a> section (optional) (default to 10)
@@ -35,7 +36,7 @@ with_table_select_options = false # bool | Return the options of 'select' column
 
 try:
     # Get list of attributes
-    api_response = api_instance.get_attributes(search=search, page=page, limit=limit, with_count=with_count, with_table_select_options=with_table_select_options)
+    api_response = api_instance.get_attributes(authorization, search=search, page=page, limit=limit, with_count=with_count, with_table_select_options=with_table_select_options)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling AttributeApi->get_attributes: %s\n" % e)
@@ -45,6 +46,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **authorization** | **str**| Equal to &#x27;Bearer xx&#x27;, where &#x27;xx&#x27; is the access token. | 
  **search** | **str**| Filter attributes, for more details see the &lt;a href&#x3D;\&quot;/documentation/filter.html#filter-attributes\&quot;&gt;Filters&lt;/a&gt; section. | [optional] 
  **page** | **int**| Number of the page to retrieve when using the &#x60;page&#x60; pagination method type. &lt;strong&gt;Should never be set manually&lt;/strong&gt;, see &lt;a href&#x3D;\&quot;/documentation/pagination.html#pagination\&quot;&gt;Pagination&lt;/a&gt; section | [optional] [default to 1]
  **limit** | **int**| Number of results by page, see &lt;a href&#x3D;\&quot;/documentation/pagination.html\&quot;&gt;Pagination&lt;/a&gt; section | [optional] [default to 10]
@@ -67,7 +69,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_attributes_code**
-> InlineResponse2009 get_attributes_code(code, with_table_select_options=with_table_select_options)
+> InlineResponse2009 get_attributes_code(authorization, code, with_table_select_options=with_table_select_options)
 
 Get an attribute
 
@@ -83,12 +85,13 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = swagger_client.AttributeApi()
+authorization = 'authorization_example' # str | Equal to 'Bearer xx', where 'xx' is the access token.
 code = 'code_example' # str | Code of the resource
 with_table_select_options = false # bool | Return the options of 'select' column types (of a table attribute) in the response. (Only available since the 7.0 version) (optional) (default to false)
 
 try:
     # Get an attribute
-    api_response = api_instance.get_attributes_code(code, with_table_select_options=with_table_select_options)
+    api_response = api_instance.get_attributes_code(authorization, code, with_table_select_options=with_table_select_options)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling AttributeApi->get_attributes_code: %s\n" % e)
@@ -98,6 +101,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **authorization** | **str**| Equal to &#x27;Bearer xx&#x27;, where &#x27;xx&#x27; is the access token. | 
  **code** | **str**| Code of the resource | 
  **with_table_select_options** | **bool**| Return the options of &#x27;select&#x27; column types (of a table attribute) in the response. (Only available since the 7.0 version) | [optional] [default to false]
 

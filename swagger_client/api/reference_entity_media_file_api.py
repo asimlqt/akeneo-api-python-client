@@ -32,16 +32,17 @@ class ReferenceEntityMediaFileApi(object):
             api_client = ApiClient()
         self.api_client = api_client
 
-    def get_reference_entity_media_files_code(self, code, **kwargs):  # noqa: E501
+    def get_reference_entity_media_files_code(self, authorization, code, **kwargs):  # noqa: E501
         """Download the media file associated to a reference entity or a record  # noqa: E501
 
         This endpoint allows you to download a given media file that is associated with a reference entity or a record.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_reference_entity_media_files_code(code, async_req=True)
+        >>> thread = api.get_reference_entity_media_files_code(authorization, code, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
+        :param str authorization: Equal to 'Bearer xx', where 'xx' is the access token. (required)
         :param str code: Code of the resource (required)
         :return: None
                  If the method is called asynchronously,
@@ -49,28 +50,29 @@ class ReferenceEntityMediaFileApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async_req'):
-            return self.get_reference_entity_media_files_code_with_http_info(code, **kwargs)  # noqa: E501
+            return self.get_reference_entity_media_files_code_with_http_info(authorization, code, **kwargs)  # noqa: E501
         else:
-            (data) = self.get_reference_entity_media_files_code_with_http_info(code, **kwargs)  # noqa: E501
+            (data) = self.get_reference_entity_media_files_code_with_http_info(authorization, code, **kwargs)  # noqa: E501
             return data
 
-    def get_reference_entity_media_files_code_with_http_info(self, code, **kwargs):  # noqa: E501
+    def get_reference_entity_media_files_code_with_http_info(self, authorization, code, **kwargs):  # noqa: E501
         """Download the media file associated to a reference entity or a record  # noqa: E501
 
         This endpoint allows you to download a given media file that is associated with a reference entity or a record.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_reference_entity_media_files_code_with_http_info(code, async_req=True)
+        >>> thread = api.get_reference_entity_media_files_code_with_http_info(authorization, code, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
+        :param str authorization: Equal to 'Bearer xx', where 'xx' is the access token. (required)
         :param str code: Code of the resource (required)
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['code']  # noqa: E501
+        all_params = ['authorization', 'code']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -85,6 +87,10 @@ class ReferenceEntityMediaFileApi(object):
                 )
             params[key] = val
         del params['kwargs']
+        # verify the required parameter 'authorization' is set
+        if ('authorization' not in params or
+                params['authorization'] is None):
+            raise ValueError("Missing the required parameter `authorization` when calling `get_reference_entity_media_files_code`")  # noqa: E501
         # verify the required parameter 'code' is set
         if ('code' not in params or
                 params['code'] is None):
@@ -99,6 +105,8 @@ class ReferenceEntityMediaFileApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -127,16 +135,17 @@ class ReferenceEntityMediaFileApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def post_reference_entity_media_files(self, content_type, **kwargs):  # noqa: E501
+    def post_reference_entity_media_files(self, authorization, content_type, **kwargs):  # noqa: E501
         """Create a new media file for a reference entity or a record  # noqa: E501
 
         This endpoint allows you to create a new media file and associate it to the image of a reference entity, or to the main image or to an attribute value of a record.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.post_reference_entity_media_files(content_type, async_req=True)
+        >>> thread = api.post_reference_entity_media_files(authorization, content_type, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
+        :param str authorization: Equal to 'Bearer xx', where 'xx' is the access token. (required)
         :param str content_type: Equal to 'multipart/form-data', no other value allowed (required)
         :param V1ReferenceentitiesmediafilesBody body:
         :return: None
@@ -145,21 +154,22 @@ class ReferenceEntityMediaFileApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async_req'):
-            return self.post_reference_entity_media_files_with_http_info(content_type, **kwargs)  # noqa: E501
+            return self.post_reference_entity_media_files_with_http_info(authorization, content_type, **kwargs)  # noqa: E501
         else:
-            (data) = self.post_reference_entity_media_files_with_http_info(content_type, **kwargs)  # noqa: E501
+            (data) = self.post_reference_entity_media_files_with_http_info(authorization, content_type, **kwargs)  # noqa: E501
             return data
 
-    def post_reference_entity_media_files_with_http_info(self, content_type, **kwargs):  # noqa: E501
+    def post_reference_entity_media_files_with_http_info(self, authorization, content_type, **kwargs):  # noqa: E501
         """Create a new media file for a reference entity or a record  # noqa: E501
 
         This endpoint allows you to create a new media file and associate it to the image of a reference entity, or to the main image or to an attribute value of a record.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.post_reference_entity_media_files_with_http_info(content_type, async_req=True)
+        >>> thread = api.post_reference_entity_media_files_with_http_info(authorization, content_type, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
+        :param str authorization: Equal to 'Bearer xx', where 'xx' is the access token. (required)
         :param str content_type: Equal to 'multipart/form-data', no other value allowed (required)
         :param V1ReferenceentitiesmediafilesBody body:
         :return: None
@@ -167,7 +177,7 @@ class ReferenceEntityMediaFileApi(object):
                  returns the request thread.
         """
 
-        all_params = ['content_type', 'body']  # noqa: E501
+        all_params = ['authorization', 'content_type', 'body']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -182,6 +192,10 @@ class ReferenceEntityMediaFileApi(object):
                 )
             params[key] = val
         del params['kwargs']
+        # verify the required parameter 'authorization' is set
+        if ('authorization' not in params or
+                params['authorization'] is None):
+            raise ValueError("Missing the required parameter `authorization` when calling `post_reference_entity_media_files`")  # noqa: E501
         # verify the required parameter 'content_type' is set
         if ('content_type' not in params or
                 params['content_type'] is None):
@@ -194,6 +208,8 @@ class ReferenceEntityMediaFileApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
         if 'content_type' in params:
             header_params['Content-type'] = params['content_type']  # noqa: E501
 

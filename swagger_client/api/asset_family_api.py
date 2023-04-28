@@ -32,16 +32,17 @@ class AssetFamilyApi(object):
             api_client = ApiClient()
         self.api_client = api_client
 
-    def get_asset_families(self, **kwargs):  # noqa: E501
+    def get_asset_families(self, authorization, **kwargs):  # noqa: E501
         """Get list of asset families  # noqa: E501
 
         This endpoint allows you to get a list of asset families. Asset families are paginated.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_asset_families(async_req=True)
+        >>> thread = api.get_asset_families(authorization, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
+        :param str authorization: Equal to 'Bearer xx', where 'xx' is the access token. (required)
         :param str search_after: Cursor when using the `search_after` pagination method type. <strong>Should never be set manually</strong>, see <a href=\"/documentation/pagination.html\">Pagination</a> section
         :return: AssetFamilies
                  If the method is called asynchronously,
@@ -49,28 +50,29 @@ class AssetFamilyApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async_req'):
-            return self.get_asset_families_with_http_info(**kwargs)  # noqa: E501
+            return self.get_asset_families_with_http_info(authorization, **kwargs)  # noqa: E501
         else:
-            (data) = self.get_asset_families_with_http_info(**kwargs)  # noqa: E501
+            (data) = self.get_asset_families_with_http_info(authorization, **kwargs)  # noqa: E501
             return data
 
-    def get_asset_families_with_http_info(self, **kwargs):  # noqa: E501
+    def get_asset_families_with_http_info(self, authorization, **kwargs):  # noqa: E501
         """Get list of asset families  # noqa: E501
 
         This endpoint allows you to get a list of asset families. Asset families are paginated.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_asset_families_with_http_info(async_req=True)
+        >>> thread = api.get_asset_families_with_http_info(authorization, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
+        :param str authorization: Equal to 'Bearer xx', where 'xx' is the access token. (required)
         :param str search_after: Cursor when using the `search_after` pagination method type. <strong>Should never be set manually</strong>, see <a href=\"/documentation/pagination.html\">Pagination</a> section
         :return: AssetFamilies
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['search_after']  # noqa: E501
+        all_params = ['authorization', 'search_after']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -85,6 +87,10 @@ class AssetFamilyApi(object):
                 )
             params[key] = val
         del params['kwargs']
+        # verify the required parameter 'authorization' is set
+        if ('authorization' not in params or
+                params['authorization'] is None):
+            raise ValueError("Missing the required parameter `authorization` when calling `get_asset_families`")  # noqa: E501
 
         collection_formats = {}
 
@@ -95,6 +101,8 @@ class AssetFamilyApi(object):
             query_params.append(('search_after', params['search_after']))  # noqa: E501
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -123,16 +131,17 @@ class AssetFamilyApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def get_asset_family_code(self, code, **kwargs):  # noqa: E501
+    def get_asset_family_code(self, authorization, code, **kwargs):  # noqa: E501
         """Get an asset family  # noqa: E501
 
         This endpoint allows you to get the information about a given asset family.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_asset_family_code(code, async_req=True)
+        >>> thread = api.get_asset_family_code(authorization, code, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
+        :param str authorization: Equal to 'Bearer xx', where 'xx' is the access token. (required)
         :param str code: Code of the resource (required)
         :return: InlineResponse20027
                  If the method is called asynchronously,
@@ -140,28 +149,29 @@ class AssetFamilyApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async_req'):
-            return self.get_asset_family_code_with_http_info(code, **kwargs)  # noqa: E501
+            return self.get_asset_family_code_with_http_info(authorization, code, **kwargs)  # noqa: E501
         else:
-            (data) = self.get_asset_family_code_with_http_info(code, **kwargs)  # noqa: E501
+            (data) = self.get_asset_family_code_with_http_info(authorization, code, **kwargs)  # noqa: E501
             return data
 
-    def get_asset_family_code_with_http_info(self, code, **kwargs):  # noqa: E501
+    def get_asset_family_code_with_http_info(self, authorization, code, **kwargs):  # noqa: E501
         """Get an asset family  # noqa: E501
 
         This endpoint allows you to get the information about a given asset family.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_asset_family_code_with_http_info(code, async_req=True)
+        >>> thread = api.get_asset_family_code_with_http_info(authorization, code, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
+        :param str authorization: Equal to 'Bearer xx', where 'xx' is the access token. (required)
         :param str code: Code of the resource (required)
         :return: InlineResponse20027
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['code']  # noqa: E501
+        all_params = ['authorization', 'code']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -176,6 +186,10 @@ class AssetFamilyApi(object):
                 )
             params[key] = val
         del params['kwargs']
+        # verify the required parameter 'authorization' is set
+        if ('authorization' not in params or
+                params['authorization'] is None):
+            raise ValueError("Missing the required parameter `authorization` when calling `get_asset_family_code`")  # noqa: E501
         # verify the required parameter 'code' is set
         if ('code' not in params or
                 params['code'] is None):
@@ -190,6 +204,8 @@ class AssetFamilyApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}

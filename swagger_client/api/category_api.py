@@ -32,16 +32,17 @@ class CategoryApi(object):
             api_client = ApiClient()
         self.api_client = api_client
 
-    def get_categories(self, **kwargs):  # noqa: E501
+    def get_categories(self, authorization, **kwargs):  # noqa: E501
         """Get list of categories  # noqa: E501
 
         This endpoint allows you to get a list of categories. Categories are paginated and sorted by `root/left`.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_categories(async_req=True)
+        >>> thread = api.get_categories(authorization, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
+        :param str authorization: Equal to 'Bearer xx', where 'xx' is the access token. (required)
         :param str search: Filter categories, for more details see the <a href=\"/documentation/filter.html#filter-categories\">Filters</a> section.
         :param int page: Number of the page to retrieve when using the `page` pagination method type. <strong>Should never be set manually</strong>, see <a href=\"/documentation/pagination.html#pagination\">Pagination</a> section
         :param int limit: Number of results by page, see <a href=\"/documentation/pagination.html\">Pagination</a> section
@@ -54,21 +55,22 @@ class CategoryApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async_req'):
-            return self.get_categories_with_http_info(**kwargs)  # noqa: E501
+            return self.get_categories_with_http_info(authorization, **kwargs)  # noqa: E501
         else:
-            (data) = self.get_categories_with_http_info(**kwargs)  # noqa: E501
+            (data) = self.get_categories_with_http_info(authorization, **kwargs)  # noqa: E501
             return data
 
-    def get_categories_with_http_info(self, **kwargs):  # noqa: E501
+    def get_categories_with_http_info(self, authorization, **kwargs):  # noqa: E501
         """Get list of categories  # noqa: E501
 
         This endpoint allows you to get a list of categories. Categories are paginated and sorted by `root/left`.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_categories_with_http_info(async_req=True)
+        >>> thread = api.get_categories_with_http_info(authorization, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
+        :param str authorization: Equal to 'Bearer xx', where 'xx' is the access token. (required)
         :param str search: Filter categories, for more details see the <a href=\"/documentation/filter.html#filter-categories\">Filters</a> section.
         :param int page: Number of the page to retrieve when using the `page` pagination method type. <strong>Should never be set manually</strong>, see <a href=\"/documentation/pagination.html#pagination\">Pagination</a> section
         :param int limit: Number of results by page, see <a href=\"/documentation/pagination.html\">Pagination</a> section
@@ -80,7 +82,7 @@ class CategoryApi(object):
                  returns the request thread.
         """
 
-        all_params = ['search', 'page', 'limit', 'with_count', 'with_position', 'with_enriched_attributes']  # noqa: E501
+        all_params = ['authorization', 'search', 'page', 'limit', 'with_count', 'with_position', 'with_enriched_attributes']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -95,6 +97,10 @@ class CategoryApi(object):
                 )
             params[key] = val
         del params['kwargs']
+        # verify the required parameter 'authorization' is set
+        if ('authorization' not in params or
+                params['authorization'] is None):
+            raise ValueError("Missing the required parameter `authorization` when calling `get_categories`")  # noqa: E501
 
         collection_formats = {}
 
@@ -115,6 +121,8 @@ class CategoryApi(object):
             query_params.append(('with_enriched_attributes', params['with_enriched_attributes']))  # noqa: E501
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -143,16 +151,17 @@ class CategoryApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def get_categories_code(self, code, **kwargs):  # noqa: E501
+    def get_categories_code(self, authorization, code, **kwargs):  # noqa: E501
         """Get a category  # noqa: E501
 
         This endpoint allows you to get the information about a given category.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_categories_code(code, async_req=True)
+        >>> thread = api.get_categories_code(authorization, code, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
+        :param str authorization: Equal to 'Bearer xx', where 'xx' is the access token. (required)
         :param str code: Code of the resource (required)
         :param bool with_position: Return information about category position into its category tree (only available since the 7.0 version)
         :param bool with_enriched_attributes: Return attribute values of the category (only available on SaaS platforms)
@@ -162,21 +171,22 @@ class CategoryApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async_req'):
-            return self.get_categories_code_with_http_info(code, **kwargs)  # noqa: E501
+            return self.get_categories_code_with_http_info(authorization, code, **kwargs)  # noqa: E501
         else:
-            (data) = self.get_categories_code_with_http_info(code, **kwargs)  # noqa: E501
+            (data) = self.get_categories_code_with_http_info(authorization, code, **kwargs)  # noqa: E501
             return data
 
-    def get_categories_code_with_http_info(self, code, **kwargs):  # noqa: E501
+    def get_categories_code_with_http_info(self, authorization, code, **kwargs):  # noqa: E501
         """Get a category  # noqa: E501
 
         This endpoint allows you to get the information about a given category.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_categories_code_with_http_info(code, async_req=True)
+        >>> thread = api.get_categories_code_with_http_info(authorization, code, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
+        :param str authorization: Equal to 'Bearer xx', where 'xx' is the access token. (required)
         :param str code: Code of the resource (required)
         :param bool with_position: Return information about category position into its category tree (only available since the 7.0 version)
         :param bool with_enriched_attributes: Return attribute values of the category (only available on SaaS platforms)
@@ -185,7 +195,7 @@ class CategoryApi(object):
                  returns the request thread.
         """
 
-        all_params = ['code', 'with_position', 'with_enriched_attributes']  # noqa: E501
+        all_params = ['authorization', 'code', 'with_position', 'with_enriched_attributes']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -200,6 +210,10 @@ class CategoryApi(object):
                 )
             params[key] = val
         del params['kwargs']
+        # verify the required parameter 'authorization' is set
+        if ('authorization' not in params or
+                params['authorization'] is None):
+            raise ValueError("Missing the required parameter `authorization` when calling `get_categories_code`")  # noqa: E501
         # verify the required parameter 'code' is set
         if ('code' not in params or
                 params['code'] is None):
@@ -218,6 +232,8 @@ class CategoryApi(object):
             query_params.append(('with_enriched_attributes', params['with_enriched_attributes']))  # noqa: E501
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -246,16 +262,17 @@ class CategoryApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def get_category_media_files_code_download(self, code, **kwargs):  # noqa: E501
+    def get_category_media_files_code_download(self, authorization, code, **kwargs):  # noqa: E501
         """Download a category media file  # noqa: E501
 
         This endpoint allows you to download a given media file that is used as an attribute value of a enriched category.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_category_media_files_code_download(code, async_req=True)
+        >>> thread = api.get_category_media_files_code_download(authorization, code, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
+        :param str authorization: Equal to 'Bearer xx', where 'xx' is the access token. (required)
         :param str code: Code of the resource (required)
         :return: None
                  If the method is called asynchronously,
@@ -263,28 +280,29 @@ class CategoryApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async_req'):
-            return self.get_category_media_files_code_download_with_http_info(code, **kwargs)  # noqa: E501
+            return self.get_category_media_files_code_download_with_http_info(authorization, code, **kwargs)  # noqa: E501
         else:
-            (data) = self.get_category_media_files_code_download_with_http_info(code, **kwargs)  # noqa: E501
+            (data) = self.get_category_media_files_code_download_with_http_info(authorization, code, **kwargs)  # noqa: E501
             return data
 
-    def get_category_media_files_code_download_with_http_info(self, code, **kwargs):  # noqa: E501
+    def get_category_media_files_code_download_with_http_info(self, authorization, code, **kwargs):  # noqa: E501
         """Download a category media file  # noqa: E501
 
         This endpoint allows you to download a given media file that is used as an attribute value of a enriched category.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_category_media_files_code_download_with_http_info(code, async_req=True)
+        >>> thread = api.get_category_media_files_code_download_with_http_info(authorization, code, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
+        :param str authorization: Equal to 'Bearer xx', where 'xx' is the access token. (required)
         :param str code: Code of the resource (required)
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['code']  # noqa: E501
+        all_params = ['authorization', 'code']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -299,6 +317,10 @@ class CategoryApi(object):
                 )
             params[key] = val
         del params['kwargs']
+        # verify the required parameter 'authorization' is set
+        if ('authorization' not in params or
+                params['authorization'] is None):
+            raise ValueError("Missing the required parameter `authorization` when calling `get_category_media_files_code_download`")  # noqa: E501
         # verify the required parameter 'code' is set
         if ('code' not in params or
                 params['code'] is None):
@@ -313,6 +335,8 @@ class CategoryApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}

@@ -8,7 +8,7 @@ Method | HTTP request | Description
 [**measure_families_get_list**](MeasureFamilyApi.md#measure_families_get_list) | **GET** /api/rest/v1/measure-families | Get list of measure familiy
 
 # **measure_families_get**
-> InlineResponse20017 measure_families_get(code)
+> InlineResponse20017 measure_families_get(authorization, code)
 
 Get a measure family
 
@@ -24,11 +24,12 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = swagger_client.MeasureFamilyApi()
+authorization = 'authorization_example' # str | Equal to 'Bearer xx', where 'xx' is the access token.
 code = 'code_example' # str | Code of the resource
 
 try:
     # Get a measure family
-    api_response = api_instance.measure_families_get(code)
+    api_response = api_instance.measure_families_get(authorization, code)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling MeasureFamilyApi->measure_families_get: %s\n" % e)
@@ -38,6 +39,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **authorization** | **str**| Equal to &#x27;Bearer xx&#x27;, where &#x27;xx&#x27; is the access token. | 
  **code** | **str**| Code of the resource | 
 
 ### Return type
@@ -56,7 +58,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **measure_families_get_list**
-> MeasureFamilies measure_families_get_list()
+> MeasureFamilies measure_families_get_list(authorization)
 
 Get list of measure familiy
 
@@ -72,17 +74,21 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = swagger_client.MeasureFamilyApi()
+authorization = 'authorization_example' # str | Equal to 'Bearer xx', where 'xx' is the access token.
 
 try:
     # Get list of measure familiy
-    api_response = api_instance.measure_families_get_list()
+    api_response = api_instance.measure_families_get_list(authorization)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling MeasureFamilyApi->measure_families_get_list: %s\n" % e)
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **str**| Equal to &#x27;Bearer xx&#x27;, where &#x27;xx&#x27; is the access token. | 
 
 ### Return type
 

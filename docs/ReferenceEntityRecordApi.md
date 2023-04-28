@@ -10,7 +10,7 @@ Method | HTTP request | Description
 [**patch_reference_entity_records_code**](ReferenceEntityRecordApi.md#patch_reference_entity_records_code) | **PATCH** /api/rest/v1/reference-entities/{reference_entity_code}/records/{code} | Update/create a record of a given reference entity
 
 # **get_reference_entity_records**
-> ReferenceEntityRecord get_reference_entity_records(reference_entity_code, search=search, channel=channel, locales=locales, search_after=search_after)
+> ReferenceEntityRecord get_reference_entity_records(authorization, reference_entity_code, search=search, channel=channel, locales=locales, search_after=search_after)
 
 Get the list of the records of a reference entity
 
@@ -26,6 +26,7 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = swagger_client.ReferenceEntityRecordApi()
+authorization = 'authorization_example' # str | Equal to 'Bearer xx', where 'xx' is the access token.
 reference_entity_code = 'reference_entity_code_example' # str | Code of the reference entity
 search = 'search_example' # str | Filter records of the reference entity, for more details see the <a href=\"/documentation/filter.html#filter-reference-entity-records\">Filters</a> section (optional)
 channel = 'channel_example' # str | Filter attribute values to return scopable attributes for the given channel as well as the non localizable/non scopable attributes, for more details see the <a href=\"/documentation/filter.html#record-values-by-channel\">Filter attribute values by channel</a> section (optional)
@@ -34,7 +35,7 @@ search_after = 'cursor to the first page' # str | Cursor when using the `search_
 
 try:
     # Get the list of the records of a reference entity
-    api_response = api_instance.get_reference_entity_records(reference_entity_code, search=search, channel=channel, locales=locales, search_after=search_after)
+    api_response = api_instance.get_reference_entity_records(authorization, reference_entity_code, search=search, channel=channel, locales=locales, search_after=search_after)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling ReferenceEntityRecordApi->get_reference_entity_records: %s\n" % e)
@@ -44,6 +45,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **authorization** | **str**| Equal to &#x27;Bearer xx&#x27;, where &#x27;xx&#x27; is the access token. | 
  **reference_entity_code** | **str**| Code of the reference entity | 
  **search** | **str**| Filter records of the reference entity, for more details see the &lt;a href&#x3D;\&quot;/documentation/filter.html#filter-reference-entity-records\&quot;&gt;Filters&lt;/a&gt; section | [optional] 
  **channel** | **str**| Filter attribute values to return scopable attributes for the given channel as well as the non localizable/non scopable attributes, for more details see the &lt;a href&#x3D;\&quot;/documentation/filter.html#record-values-by-channel\&quot;&gt;Filter attribute values by channel&lt;/a&gt; section | [optional] 
@@ -66,7 +68,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_reference_entity_records_code**
-> InlineResponse20026 get_reference_entity_records_code(reference_entity_code, code)
+> InlineResponse20026 get_reference_entity_records_code(authorization, reference_entity_code, code)
 
 Get a record of a given reference entity
 
@@ -82,12 +84,13 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = swagger_client.ReferenceEntityRecordApi()
+authorization = 'authorization_example' # str | Equal to 'Bearer xx', where 'xx' is the access token.
 reference_entity_code = 'reference_entity_code_example' # str | Code of the reference entity
 code = 'code_example' # str | Code of the resource
 
 try:
     # Get a record of a given reference entity
-    api_response = api_instance.get_reference_entity_records_code(reference_entity_code, code)
+    api_response = api_instance.get_reference_entity_records_code(authorization, reference_entity_code, code)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling ReferenceEntityRecordApi->get_reference_entity_records_code: %s\n" % e)
@@ -97,6 +100,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **authorization** | **str**| Equal to &#x27;Bearer xx&#x27;, where &#x27;xx&#x27; is the access token. | 
  **reference_entity_code** | **str**| Code of the reference entity | 
  **code** | **str**| Code of the resource | 
 
