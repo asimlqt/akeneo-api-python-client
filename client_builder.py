@@ -12,7 +12,11 @@ from api import (attribute_api,
                  family_api,
                  family_variant_api,
                  product_model_api,
-                 product_uuid_api)
+                 product_uuid_api,
+                 reference_entity_api,
+                 reference_entity_attribute_api,
+                 reference_entity_attribute_option_api,
+                 reference_entity_record_api)
 
 
 class ClientBuilder:
@@ -20,11 +24,11 @@ class ClientBuilder:
     def __init__(self, base_uri):
         self.base_uri = base_uri
 
-    def build_authenticated_by_password(self, username, password, client_id, secret):
+    def build_authenticated_by_password(self, username, password, client_id, secret) -> AkeneoClient:
         authentication = Authentication.from_password(username, password, client_id, secret)
         return self.build(authentication)
 
-    def build(self, authentication):
+    def build(self, authentication) -> AkeneoClient:
         uri_generator = UriGenerator(self.base_uri)
         http_client = HttpClient()
 
@@ -45,5 +49,9 @@ class ClientBuilder:
             _family_api=family_api.FamilyApi(resource_client, page_factory),
             _family_variant_api=family_variant_api.FamilyVariantApi(resource_client, page_factory),
             _product_model_api=product_model_api.ProductModelApi(resource_client, page_factory),
-            _product_uuid_api=product_uuid_api.ProductUuidApi(resource_client, page_factory)
+            _product_uuid_api=product_uuid_api.ProductUuidApi(resource_client, page_factory),
+            _reference_entity_api=reference_entity_api.ReferenceEntityApi(resource_client, page_factory),
+            _reference_entity_attribute_api=reference_entity_attribute_api.ReferenceEntityAttributeApi(resource_client, page_factory),
+            _reference_entity_attribute_option_api=reference_entity_attribute_option_api.ReferenceEntityAttributeOptionApi(resource_client),
+            _reference_entity_record_api=reference_entity_record_api.ReferenceEntityRecordApi(resource_client, page_factory)
         )

@@ -46,6 +46,14 @@ class ResourceClient:
             body
         )
 
+    def upsert_batch_json_resource(self, path: str, uri_params: list[str] = [], body: JsonSerializable = None) -> Response:
+        return self.authenticated_http_client.send_request(
+            "PATCH",
+            self.uri_generator.generate(path, uri_params),
+            {"Content-Type": "application/json"},
+            body
+        )
+
     def delete_resource(self, path: str, uri_params: list[str] = []) -> Response:
         return self.authenticated_http_client.send_request(
             "DELETE",
