@@ -1,5 +1,9 @@
 from security.authentication import Authentication
-from api import (attribute_api,
+from api import (asset_api,
+                 asset_attribute_api,
+                 asset_attribute_option_api,
+                 asset_family_api,
+                 attribute_api,
                  attribute_group_api,
                  attribute_option_api,
                  family_api,
@@ -17,6 +21,10 @@ class AkeneoClient:
     def __init__(
         self,
         authentication: Authentication,
+        _asset_api: asset_api.AssetApi,
+        _asset_attribute_api: asset_attribute_api.AssetAttributeApi,
+        _asset_attribute_option_api: asset_attribute_option_api.AssetAttributeOptionApi,
+        _asset_family_api: asset_family_api.AssetFamilyApi,
         _attribute_api: attribute_api.AttributeApi,
         _attribute_group_api: attribute_group_api.AttributeGroupApi,
         _attribute_option_api: attribute_option_api.AttributeOptionApi,
@@ -30,6 +38,10 @@ class AkeneoClient:
         _reference_entity_record_api: reference_entity_record_api.ReferenceEntityRecordApi
     ):
         self.authentication = authentication
+        self.asset_api = _asset_api
+        self.asset_attribute_api = _asset_attribute_api
+        self.asset_attribute_option_api = _asset_attribute_option_api
+        self.asset_family_api = _asset_family_api
         self.attribute_api = _attribute_api
         self.attribute_option_api = _attribute_option_api
         self.attribute_group_api = _attribute_group_api

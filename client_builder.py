@@ -5,7 +5,11 @@ from client.resource_client import ResourceClient
 from client.authenticated_http_client import AuthenticatedHttpClient
 from pagination.page_factory import PageFactory
 from akeneo_client import AkeneoClient
-from api import (attribute_api,
+from api import (asset_api,
+                 asset_attribute_api,
+                 asset_attribute_option_api,
+                 asset_family_api,
+                 attribute_api,
                  attribute_group_api,
                  attribute_option_api,
                  authentication_api,
@@ -43,6 +47,10 @@ class ClientBuilder:
 
         return AkeneoClient(
             authentication=authentication,
+            _asset_api=asset_api.AssetApi(resource_client, page_factory),
+            _asset_attribute_api=asset_attribute_api.AssetAttributeApi(resource_client),
+            _asset_attribute_option_api=asset_attribute_option_api.AssetAttributeOptionApi(resource_client),
+            _asset_family_api=asset_family_api.AssetFamilyApi(resource_client, page_factory),
             _attribute_api=attribute_api.AttributeApi(resource_client, page_factory),
             _attribute_group_api=attribute_group_api.AttributeGroupApi(resource_client, page_factory),
             _attribute_option_api=attribute_option_api.AttributeOptionApi(resource_client, page_factory),
