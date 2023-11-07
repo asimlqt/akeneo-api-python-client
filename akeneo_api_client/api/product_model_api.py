@@ -1,10 +1,11 @@
 import json
 from collections.abc import Iterable
-from pagination.resource_cursor import ResourceCursor
-from api.request.dict_serialize import DictSerialize
-from api.request.line_serialize import LineSerialize
-from client.resource_client import ResourceClient
-from pagination.page_factory import PageFactory
+
+from akeneo_api_client.client.resource_client import ResourceClient
+from akeneo_api_client.pagination.page_factory import PageFactory
+from akeneo_api_client.pagination.resource_cursor import ResourceCursor
+from .request.dict_serialize import DictSerialize
+from .request.line_serialize import LineSerialize
 
 
 class ProductModelApi:

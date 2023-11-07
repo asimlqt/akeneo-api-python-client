@@ -1,5 +1,7 @@
 import json
-from api.request.dict_serialize import DictSerialize
+
+from akeneo_api_client.client.resource_client import ResourceClient
+from .request.dict_serialize import DictSerialize
 
 
 class ReferenceEntityAttributeOptionApi:
@@ -7,7 +9,7 @@ class ReferenceEntityAttributeOptionApi:
     REFERENCE_ENTITY_ATTRIBUTE_OPTIONS_URI = "api/rest/v1/reference-entities/%s/attributes/%s/options"
     REFERENCE_ENTITY_ATTRIBUTE_OPTION_URI = "api/rest/v1/reference-entities/%s/attributes/%s/options/%s"
 
-    def __init__(self, resource_client):
+    def __init__(self, resource_client: ResourceClient):
         self.resource_client = resource_client
 
     def get(self, reference_entity_code: str, attribute_code: str, attribute_option_code: str) -> dict[str, any]:

@@ -1,7 +1,8 @@
 import requests
 from requests.models import Response
-from client.akeneo_api_error import AkeneoApiError
-from api.request.json_serializable import JsonSerializable
+
+from .akeneo_api_error import AkeneoApiError
+from akeneo_api_client.api.request.json_serializable import JsonSerializable
 
 
 class HttpClient:

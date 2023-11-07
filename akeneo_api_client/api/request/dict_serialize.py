@@ -1,5 +1,6 @@
 import json
-from api.request.json_serializable import JsonSerializable
+
+from .json_serializable import JsonSerializable
 
 
 class DictSerialize(JsonSerializable):

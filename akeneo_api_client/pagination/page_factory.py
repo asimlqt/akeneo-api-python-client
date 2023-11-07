@@ -1,4 +1,4 @@
-from pagination.page import Page
+from .page import Page
 
 
 class PageFactory:

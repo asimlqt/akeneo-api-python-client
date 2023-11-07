@@ -1,5 +1,5 @@
-from security.authentication import Authentication
-from api import (asset_api,
+from .security.authentication import Authentication
+from .api import (asset_api,
                  asset_attribute_api,
                  asset_attribute_option_api,
                  asset_family_api,

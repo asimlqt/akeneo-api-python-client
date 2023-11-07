@@ -1,11 +1,11 @@
-from security.authentication import Authentication
-from client.uri_generator import UriGenerator
-from client.http_client import HttpClient
-from client.resource_client import ResourceClient
-from client.authenticated_http_client import AuthenticatedHttpClient
-from pagination.page_factory import PageFactory
-from akeneo_client import AkeneoClient
-from api import (asset_api,
+from .security.authentication import Authentication
+from .client.uri_generator import UriGenerator
+from .client.http_client import HttpClient
+from .client.resource_client import ResourceClient
+from .client.authenticated_http_client import AuthenticatedHttpClient
+from .pagination.page_factory import PageFactory
+from .akeneo_client import AkeneoClient
+from .api import (asset_api,
                  asset_attribute_api,
                  asset_attribute_option_api,
                  asset_family_api,

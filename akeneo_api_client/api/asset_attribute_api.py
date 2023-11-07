@@ -1,11 +1,7 @@
 import json
-from collections.abc import Iterable
 
-import client.resource_client
-import pagination.page_factory
-from pagination.resource_cursor import ResourceCursor
-from api.request.dict_serialize import DictSerialize
-from api.request.list_serialize import ListSerialize
+from akeneo_api_client.client.resource_client import ResourceClient
+from .request.dict_serialize import DictSerialize
 
 
 class AssetAttributeApi:
@@ -13,7 +9,7 @@ class AssetAttributeApi:
     ASSET_ATTRIBUTES_URI = "api/rest/v1/asset-families/%s/attributes"
     ASSET_ATTRIBUTE_URI = "api/rest/v1/asset-families/%s/attributes/%s"
 
-    def __init__(self, resource_client: client.resource_client.ResourceClient):
+    def __init__(self, resource_client: ResourceClient):
         self.resource_client = resource_client
 
     def get(self, asset_family_code: str, attribute_code: str) -> dict[str, any]:

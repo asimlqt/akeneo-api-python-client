@@ -1,5 +1,7 @@
 import base64
-from api.request.dict_serialize import DictSerialize, JsonSerializable
+
+from .request.dict_serialize import DictSerialize
+from .request.json_serializable import JsonSerializable
 
 
 class AuthenticationApi:

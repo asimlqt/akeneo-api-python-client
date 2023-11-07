@@ -1,5 +1,6 @@
 from requests.models import Response
-from api.request.json_serializable import JsonSerializable
+
+from akeneo_api_client.api.request.json_serializable import JsonSerializable
 
 
 class ResourceClient:

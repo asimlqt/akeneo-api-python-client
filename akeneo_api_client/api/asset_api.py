@@ -1,11 +1,11 @@
 import json
 from collections.abc import Iterable
 
-import client.resource_client
-import pagination.page_factory
-from pagination.resource_cursor import ResourceCursor
-from api.request.dict_serialize import DictSerialize
-from api.request.list_serialize import ListSerialize
+import akeneo_api_client.client.resource_client
+import akeneo_api_client.pagination.page_factory
+from akeneo_api_client.pagination.resource_cursor import ResourceCursor
+from .request.dict_serialize import DictSerialize
+from .request.list_serialize import ListSerialize
 
 
 class AssetApi:
@@ -15,8 +15,8 @@ class AssetApi:
 
     def __init__(
         self,
-        resource_client: client.resource_client.ResourceClient,
-        page_factory: pagination.page_factory.PageFactory
+        resource_client: akeneo_api_client.client.resource_client.ResourceClient,
+        page_factory: akeneo_api_client.pagination.page_factory.PageFactory
     ):
         self.resource_client = resource_client
         self.page_factory = page_factory

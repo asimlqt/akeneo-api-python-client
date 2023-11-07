@@ -1,8 +1,10 @@
 import json
 from collections.abc import Iterable
-from pagination.resource_cursor import ResourceCursor
-from api.request.dict_serialize import DictSerialize
-from api.request.line_serialize import LineSerialize
+
+from akeneo_api_client.client.resource_client import ResourceClient
+from akeneo_api_client.pagination.page_factory import PageFactory
+from akeneo_api_client.pagination.resource_cursor import ResourceCursor
+from .request.dict_serialize import DictSerialize
 
 
 class ReferenceEntityAttributeApi:
@@ -10,7 +12,7 @@ class ReferenceEntityAttributeApi:
     REFERENCE_ENTITY_ATTRIBUTES_URI = "api/rest/v1/reference-entities/%s/attributes"
     REFERENCE_ENTITY_ATTRIBUTE_URI = "api/rest/v1/reference-entities/%s/attributes/%s"
 
-    def __init__(self, resource_client, page_factory):
+    def __init__(self, resource_client: ResourceClient, page_factory: PageFactory):
         self.resource_client = resource_client
         self.page_factory = page_factory
 

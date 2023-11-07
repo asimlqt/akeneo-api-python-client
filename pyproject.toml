@@ -1,6 +1,10 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
 [project]
 name = "akeneo_api_client"
-version = "0.0.1"
+version = "0.0.6"
 authors = [
   { name="Asim Liaquat", email="asm.lqt@gmail.com" },
 ]
