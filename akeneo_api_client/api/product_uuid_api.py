@@ -38,10 +38,10 @@ class ProductUuidApi:
     def delete(self, uuid: str) -> None:
         self.resource_client.delete_resource(self.PRODUCT_UUID_URI, [uuid])
 
-    def upsert_batch(self, data: list[dict]) -> list[dict]:
+    def upsert_list(self, data: list[dict]) -> list[dict]:
         batch = LineSerialize()
         batch.add_items(data)
 
-        response = self.resource_client.upsert_batch_resource(self.PRODUCTS_UUID_URI, [], batch)
+        response = self.resource_client.upsert_list_resource(self.PRODUCTS_UUID_URI, [], batch)
 
         return [json.loads(item) for item in response.content.decode('utf-8').split("\n")]

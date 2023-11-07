@@ -33,10 +33,10 @@ class AttributeApi:
     def upsert(self, code: str, data: dict = {}) -> None:
         self.resource_client.upsert_resource(self.ATTRIBUTE_URI, [code], DictSerialize(data))
 
-    def upsert_batch(self, data: list[dict]) -> list[dict]:
+    def upsert_list(self, data: list[dict]) -> list[dict]:
         batch = LineSerialize()
         batch.add_items(data)
 
-        response = self.resource_client.upsert_batch_resource(self.ATTRIBUTES_URI, [], batch)
+        response = self.resource_client.upsert_list_resource(self.ATTRIBUTES_URI, [], batch)
 
         return [json.loads(item) for item in response.content.decode('utf-8').split("\n")]

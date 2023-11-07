@@ -39,7 +39,7 @@ class ResourceClient:
             body
         )
 
-    def upsert_batch_resource(self, path: str, uri_params: list[str] = [], body: JsonSerializable = None) -> Response:
+    def upsert_list_resource(self, path: str, uri_params: list[str] = [], body: JsonSerializable = None) -> Response:
         return self.authenticated_http_client.send_request(
             "PATCH",
             self.uri_generator.generate(path, uri_params),
@@ -47,7 +47,7 @@ class ResourceClient:
             body
         )
 
-    def upsert_batch_json_resource(self, path: str, uri_params: list[str] = [], body: JsonSerializable = None) -> Response:
+    def upsert_list_json_resource(self, path: str, uri_params: list[str] = [], body: JsonSerializable = None) -> Response:
         return self.authenticated_http_client.send_request(
             "PATCH",
             self.uri_generator.generate(path, uri_params),

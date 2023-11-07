@@ -99,7 +99,7 @@ products = [
 ]
 
 try:
-    response = api.product_uuid_api.upsert_batch(products)
+    response = api.product_uuid_api.upsert_list(products)
     for item in response:
         if item['status_code'] >= 400:
             print(item)

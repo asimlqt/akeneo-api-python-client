@@ -39,11 +39,11 @@ class AssetApi:
             DictSerialize(data)
         )
 
-    def upsert_batch(self, asset_family_code: str, data: list[dict]) -> list[dict]:
+    def upsert_list(self, asset_family_code: str, data: list[dict]) -> list[dict]:
         batch = ListSerialize()
         batch.add_items(data)
 
-        response = self.resource_client.upsert_batch_json_resource(
+        response = self.resource_client.upsert_list_json_resource(
             self.ASSETS_URI,
             [asset_family_code],
             batch

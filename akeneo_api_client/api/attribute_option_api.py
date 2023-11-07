@@ -42,10 +42,10 @@ class AttributeOptionApi:
     def upsert(self, attribute_code: str, code: str, data: dict = {}) -> None:
         self.resource_client.upsert_resource(self.ATTRIBUTE_OPTION_URI, [attribute_code, code], DictSerialize(data))
 
-    def upsert_batch(self, attribute_code: str, data: list[dict]) -> list[dict]:
+    def upsert_list(self, attribute_code: str, data: list[dict]) -> list[dict]:
         batch = LineSerialize()
         batch.add_items(data)
 
-        response = self.resource_client.upsert_batch_resource(self.ATTRIBUTE_OPTIONS_URI, [attribute_code], batch)
+        response = self.resource_client.upsert_list_resource(self.ATTRIBUTE_OPTIONS_URI, [attribute_code], batch)
 
         return [json.loads(item) for item in response.content.decode('utf-8').split("\n")]

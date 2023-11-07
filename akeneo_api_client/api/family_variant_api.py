@@ -31,10 +31,10 @@ class FamilyVariantApi:
     def upsert(self, family_code: str, family_variant_code: str, data: dict = {}) -> None:
         self.resource_client.upsert_resource(self.FAMILY_VARIANT_URI, [family_code, family_variant_code], DictSerialize(data))
 
-    def upsert_batch(self, family_code: str, data: list[dict]) -> list[dict]:
+    def upsert_list(self, family_code: str, data: list[dict]) -> list[dict]:
         batch = LineSerialize()
         batch.add_items(data)
 
-        response = self.resource_client.upsert_batch_resource(self.FAMILY_VARIANTS_URI, [family_code], batch)
+        response = self.resource_client.upsert_list_resource(self.FAMILY_VARIANTS_URI, [family_code], batch)
 
         return [json.loads(item) for item in response.content.decode('utf-8').split("\n")]

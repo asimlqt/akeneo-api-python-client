@@ -42,11 +42,11 @@ class ReferenceEntityRecordApi:
             DictSerialize(data)
         )
 
-    def upsert_batch(self, reference_entity_code: str, data: list[dict]) -> list[dict]:
+    def upsert_list(self, reference_entity_code: str, data: list[dict]) -> list[dict]:
         batch = ListSerialize()
         batch.add_items(data)
 
-        response = self.resource_client.upsert_batch_json_resource(
+        response = self.resource_client.upsert_list_json_resource(
             self.REFERENCE_ENTITY_RECORDS_URI,
             [reference_entity_code],
             batch
