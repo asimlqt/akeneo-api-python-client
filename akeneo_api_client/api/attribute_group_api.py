@@ -1,5 +1,6 @@
 import json
 from collections.abc import Iterable
+from requests.models import Response
 
 from akeneo_api_client.client.resource_client import ResourceClient
 from akeneo_api_client.pagination.page_factory import PageFactory
@@ -27,11 +28,11 @@ class AttributeGroupApi:
 
         return iter(ResourceCursor(page_size, page))
 
-    def create(self, data: dict = {}) -> None:
-        self.resource_client.create_resource(self.ATTRIBUTE_GROUPS_URI, [], DictSerialize(data))
+    def create(self, data: dict = {}) -> Response:
+        return self.resource_client.create_resource(self.ATTRIBUTE_GROUPS_URI, [], DictSerialize(data))
 
-    def upsert(self, code: str, data: dict = {}) -> None:
-        self.resource_client.upsert_resource(self.ATTRIBUTE_GROUP_URI, [code], DictSerialize(data))
+    def upsert(self, code: str, data: dict = {}) -> Response:
+        return self.resource_client.upsert_resource(self.ATTRIBUTE_GROUP_URI, [code], DictSerialize(data))
 
     def upsert_list(self, data: list[dict]) -> list[dict]:
         batch = LineSerialize()

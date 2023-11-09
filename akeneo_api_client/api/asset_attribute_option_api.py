@@ -1,4 +1,5 @@
 import json
+from requests.models import Response
 
 from akeneo_api_client.client.resource_client import ResourceClient
 from .request.dict_serialize import DictSerialize
@@ -27,8 +28,8 @@ class AssetAttributeOptionApi:
         )
         return json.loads(response.content)
 
-    def upsert(self, asset_family_code: str, attribute_code: str, option_code: str, data: dict = {}) -> None:
-        self.resource_client.upsert_resource(
+    def upsert(self, asset_family_code: str, attribute_code: str, option_code: str, data: dict = {}) -> Response:
+        return self.resource_client.upsert_resource(
             self.ASSET_ATTRIBUTE_OPTION_URI,
             [asset_family_code, attribute_code, option_code],
             DictSerialize(data)

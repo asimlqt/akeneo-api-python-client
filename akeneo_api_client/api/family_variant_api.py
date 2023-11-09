@@ -1,5 +1,6 @@
 import json
 from collections.abc import Iterable
+from requests.models import Response
 
 from akeneo_api_client.client.resource_client import ResourceClient
 from akeneo_api_client.pagination.page_factory import PageFactory
@@ -18,18 +19,30 @@ class FamilyVariantApi:
         self.page_factory = page_factory
 
     def get(self, family_code: str, family_variant_code: str) -> dict[str, any]:
-        response = self.resource_client.get_resource(self.FAMILY_VARIANT_URI, [family_code, family_variant_code])
+        response = self.resource_client.get_resource(
+            self.FAMILY_VARIANT_URI,
+            [family_code, family_variant_code]
+        )
 
         return json.loads(response.content)
 
     def all(self, family_code: str, page_size: int = 10, query_params: dict = {}) -> Iterable[list]:
-        response = self.resource_client.get_resources(self.FAMILY_VARIANTS_URI, [family_code], query_params, page_size)
+        response = self.resource_client.get_resources(
+            self.FAMILY_VARIANTS_URI,
+            [family_code],
+            query_params,
+            page_size
+        )
         page = self.page_factory.create_page(response.json())
 
         return iter(ResourceCursor(page_size, page))
 
-    def upsert(self, family_code: str, family_variant_code: str, data: dict = {}) -> None:
-        self.resource_client.upsert_resource(self.FAMILY_VARIANT_URI, [family_code, family_variant_code], DictSerialize(data))
+    def upsert(self, family_code: str, family_variant_code: str, data: dict = {}) -> Response:
+        return self.resource_client.upsert_resource(
+            self.FAMILY_VARIANT_URI,
+            [family_code, family_variant_code],
+            DictSerialize(data)
+        )
 
     def upsert_list(self, family_code: str, data: list[dict]) -> list[dict]:
         batch = LineSerialize()

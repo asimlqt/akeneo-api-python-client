@@ -1,5 +1,6 @@
 import json
 from collections.abc import Iterable
+from requests.models import Response
 
 import akeneo_api_client.client.resource_client
 import akeneo_api_client.pagination.page_factory
@@ -32,8 +33,8 @@ class AssetApi:
 
         return iter(ResourceCursor(0, page))
 
-    def upsert(self, asset_family_code: str, asset_code: str, data: dict = {}) -> None:
-        self.resource_client.upsert_resource(
+    def upsert(self, asset_family_code: str, asset_code: str, data: dict = {}) -> Response:
+        return self.resource_client.upsert_resource(
             self.ASSET_URI,
             [asset_family_code, asset_code],
             DictSerialize(data)
@@ -51,5 +52,5 @@ class AssetApi:
 
         return [json.loads(item) for item in response.content.decode('utf-8').split("\n")]
 
-    def delete(self, asset_family_code: str, asset_code: str) -> None:
-        self.resource_client.delete_resource(self.ASSET_URI, [asset_family_code, asset_code])
+    def delete(self, asset_family_code: str, asset_code: str) -> Response:
+        return self.resource_client.delete_resource(self.ASSET_URI, [asset_family_code, asset_code])

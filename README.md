@@ -53,7 +53,8 @@ except AkeneoApiError as e:
 
 ```python
 try:
-    api.product_uuid_api.create(data={"family":"my_family"})
+    response = api.product_uuid_api.create(data={"family":"my_family"})
+    print(response.headers.get("location"))
 except AkeneoApiError as e:
     print(e.response_body)
 ```

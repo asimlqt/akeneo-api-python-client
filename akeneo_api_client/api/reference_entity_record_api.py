@@ -1,5 +1,6 @@
 import json
 from collections.abc import Iterable
+from requests.models import Response
 
 from akeneo_api_client.client.resource_client import ResourceClient
 from akeneo_api_client.pagination.page_factory import PageFactory
@@ -35,8 +36,8 @@ class ReferenceEntityRecordApi:
 
         return iter(ResourceCursor(0, page))
 
-    def upsert(self, reference_entity_code: str, record_code: str, data: dict = {}) -> None:
-        self.resource_client.upsert_resource(
+    def upsert(self, reference_entity_code: str, record_code: str, data: dict = {}) -> Response:
+        return self.resource_client.upsert_resource(
             self.REFERENCE_ENTITY_RECORD_URI,
             [reference_entity_code, record_code],
             DictSerialize(data)

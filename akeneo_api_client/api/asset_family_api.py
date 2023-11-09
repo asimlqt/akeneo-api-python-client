@@ -1,5 +1,6 @@
 import json
 from collections.abc import Iterable
+from requests.models import Response
 
 from akeneo_api_client.client.resource_client import ResourceClient
 from akeneo_api_client.pagination import (page_factory, resource_cursor)
@@ -30,5 +31,5 @@ class AssetFamilyApi:
 
         return iter(resource_cursor.ResourceCursor(0, page))
 
-    def upsert(self, code: str, data: dict = {}) -> None:
-        self.resource_client.upsert_resource(self.ASSET_FAMILY_URI, [code], DictSerialize(data))
+    def upsert(self, code: str, data: dict = {}) -> Response:
+        return self.resource_client.upsert_resource(self.ASSET_FAMILY_URI, [code], DictSerialize(data))

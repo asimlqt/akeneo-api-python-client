@@ -1,11 +1,13 @@
 import json
 from collections.abc import Iterable
+from requests.models import Response
 
 from akeneo_api_client.client.resource_client import ResourceClient
 from akeneo_api_client.pagination.page_factory import PageFactory
 from akeneo_api_client.pagination.resource_cursor import ResourceCursor
 from .request.dict_serialize import DictSerialize
 from .request.line_serialize import LineSerialize
+
 
 class AttributeOptionApi:
 
@@ -22,25 +24,32 @@ class AttributeOptionApi:
         return json.loads(response.content)
 
     def all(self, attribute_code: str, page_size: int = 10, query_params: dict = {}) -> Iterable[list]:
-        response = self.resource_client.get_resources(self.ATTRIBUTE_OPTIONS_URI, [attribute_code], query_params, page_size)
+        response = self.resource_client.get_resources(
+            self.ATTRIBUTE_OPTIONS_URI,
+            [attribute_code],
+            query_params,
+            page_size
+        )
         page = self.page_factory.create_page(response.json())
 
         return iter(ResourceCursor(page_size, page))
 
-    def create(self, attribute_code: str, code: str, data: dict = {}) -> None:
-        if "code" in data:
-            raise Exception('The parameter "code" should not be defined in the data parameter')
-
-        if "attribute" in data:
-            raise Exception('The parameter "attribute" should not be defined in the data parameter')
-
-        data["code"] = code
+    def create(self, attribute_code: str, attribute_option_code: str, data: dict = {}) -> Response:
+        data["code"] = attribute_option_code
         data["attribute"] = attribute_code
 
-        self.resource_client.create_resource(self.ATTRIBUTE_OPTIONS_URI, [attribute_code], DictSerialize(data))
+        return self.resource_client.create_resource(
+            self.ATTRIBUTE_OPTIONS_URI,
+            [attribute_code],
+            DictSerialize(data)
+        )
 
-    def upsert(self, attribute_code: str, code: str, data: dict = {}) -> None:
-        self.resource_client.upsert_resource(self.ATTRIBUTE_OPTION_URI, [attribute_code, code], DictSerialize(data))
+    def upsert(self, attribute_code: str, attribute_option_code: str, data: dict = {}) -> Response:
+        return self.resource_client.upsert_resource(
+            self.ATTRIBUTE_OPTION_URI,
+            [attribute_code, attribute_option_code],
+            DictSerialize(data)
+        )
 
     def upsert_list(self, attribute_code: str, data: list[dict]) -> list[dict]:
         batch = LineSerialize()
