@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "akeneo_api_client"
-version = "0.0.8"
+version = "0.0.9"
 authors = [
   { name="Asim Liaquat", email="asm.lqt@gmail.com" },
 ]
