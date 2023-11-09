@@ -12,8 +12,6 @@ class HttpClient:
         if body is not None:
             data = body.serialize()
 
-        # print(data)
-
         response = requests.request(method, uri, headers=headers, data=data)
         if response.status_code >= 400:
             raise AkeneoApiError(response)
