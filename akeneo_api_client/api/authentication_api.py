@@ -21,6 +21,14 @@ class AuthenticationApi:
 
         return self.authenticate(client_id, secret, DictSerialize(body))
 
+    def authenticate_by_refresh_token(self, client_id: str, secret: str, refresh_token: str):
+        body = {
+            "grant_type": "refresh_token",
+            "refresh_token": refresh_token
+        }
+
+        return self.authenticate(client_id, secret, DictSerialize(body))
+
     def authenticate(self, client_id: str, secret: str, body: JsonSerializable):
         headers = {
             "Content-Type": "application/json",
