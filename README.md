@@ -2,17 +2,10 @@
 
 A simple Python client for the Akeneo PIM API
 
-## Requirements
-* requests
-
-```commandline
-pip install requests
-```
-
 ## Installation
 
 ```commandline
-pip install akeneo_api_client
+pip install akeneo-api-client
 ```
 
 ## Usage
