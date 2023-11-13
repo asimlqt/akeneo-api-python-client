@@ -9,7 +9,7 @@ class ResourceClient:
         self.uri_generator = uri_generator
         self.authenticated_http_client = authenticated_http_client
 
-    def get_resource(self, path: str, uri_params: list[str], query_params: dict = {}) -> Response:
+    def get_resource(self, path: str, uri_params: list[str] = [], query_params: dict = {}) -> Response:
         return self.authenticated_http_client.send_request(
             "GET",
             self.uri_generator.generate(path, uri_params, query_params),
