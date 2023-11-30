@@ -20,6 +20,12 @@ cb = ClientBuilder(uri)
 api = cb.build_authenticated_by_password(username, password, client_id, secret)
 ```
 
+Or if you already have a cached version of the token you can use:
+
+```python
+api = cb.build_authenticated_by_token(client_id, secret, token, refresh_token)
+```
+
 ### Fetch a product
 
 ```python

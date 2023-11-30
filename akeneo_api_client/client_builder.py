@@ -38,6 +38,10 @@ class ClientBuilder:
         authentication = Authentication.from_password(username, password, client_id, secret)
         return self.build(authentication)
 
+    def build_authenticated_by_token(self, client_id, secret, token, refresh_token) -> AkeneoClient:
+        authentication = Authentication.from_token(client_id, secret, token, refresh_token)
+        return self.build(authentication)
+
     def build(self, authentication) -> AkeneoClient:
         uri_generator = UriGenerator(self.base_uri)
         http_client = HttpClient()
