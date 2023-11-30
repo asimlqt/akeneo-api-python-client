@@ -34,8 +34,16 @@ except AkeneoApiError as e:
 ### Iterate over a list of products
 
 ```python
+from akeneo_api_client.search.search_builder import SearchBuilder
+
+sb = SearchBuilder()
+sb.add_filter('updated', '>', '2023-11-29 00:00:00')
+sb.add_filter('completeness', '=', 100, {"scope": "ecommerce"})
+sb.add_filter('enabled', '=', True)
+search = sb.get_filters()
+
 try:
-    for page in api.product_uuid_api.all():
+    for page in api.product_uuid_api.all(query_params={"search": search}):
         for item in page:
             print(item["uuid"])
 except AkeneoApiError as e:
